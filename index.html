@@ -2,16 +2,166 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GK Gaming | Coming Soon</title>
-</head>
-<body style="background-color: #ffffff; color: #222222; font-family: Arial, sans-serif; text-align: center; padding-top: 180px;">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GK Gaming | Official Website</title>
 
-    <h1 style="font-size: 48px;">GK GAMING</h1>
-    <h2>COMING SOON</h2>
-    <p>Something exciting is on its way.</p>
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #151515;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+}
+
+header {
+    padding: 24px 7%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo {
+    width: 145px;
+    height: auto;
+    object-fit: contain;
+}
+
+main {
+    min-height: 75vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 45px 7%;
+}
+
+.development {
+    color: #FFD629;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 5px;
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+h1 {
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.subtitle {
+    color: #999999;
+    font-size: 15px;
+    margin-top: 14px;
+    text-align: center;
+}
+
+.navigation {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
+    width: 100%;
+    max-width: 850px;
+    margin-top: 65px;
+}
+
+.nav-card {
+    text-decoration: none;
+    color: white;
+    background: #222222;
+    border: 1px solid #383838;
+    border-radius: 10px;
+    padding: 25px 16px;
+    text-align: center;
+    transition: 0.3s ease;
+}
+
+.nav-card:hover {
+    border-color: #F07832;
+    background: #29231F;
+    transform: translateY(-5px);
+}
+
+.nav-card h2 {
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
+.nav-card p {
+    color: #999999;
+    font-size: 12px;
+    margin-top: 10px;
+}
+
+footer {
+    text-align: center;
+    color: #666666;
+    font-size: 12px;
+    padding: 25px;
+    letter-spacing: 2px;
+}
+
+@media (max-width: 600px) {
+    .navigation {
+        grid-template-columns: 1fr;
+        max-width: 350px;
+        margin-top: 40px;
+    }
+
+    main {
+        padding-top: 30px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <img src="gk-logo.webp" alt="GK Gaming Logo" class="logo">
+</header>
+
+<main>
+    <p class="development">UNDER DEVELOPMENT</p>
+
+    <h1>Something New Is Coming.</h1>
+
+    <p class="subtitle">
+        We're building something special for our community.
+    </p>
+
+    <nav class="navigation">
+
+        <a href="about.html" class="nav-card">
+            <h2>ABOUT US</h2>
+            <p>Discover GK Gaming</p>
+        </a>
+
+        <a href="marketplace.html" class="nav-card">
+            <h2>MARKETPLACE</h2>
+            <p>Explore our marketplace</p>
+        </a>
+
+        <a href="gk-plus.html" class="nav-card">
+            <h2>GK+</h2>
+            <p>Discover exclusive experiences</p>
+        </a>
+
+    </nav>
+</main>
+
+<footer>
+    GK GAMING &nbsp; | &nbsp; EST. 2026
+</footer>
 
 </body>
 </html>
-
