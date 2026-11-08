@@ -14,23 +14,51 @@
 }
 
 body {
-    background: #FAFAF8;
-    color: #191919;
+    background: #151515;
+    color: #F5F5F5;
     font-family: Arial, Helvetica, sans-serif;
     min-height: 100vh;
 }
 
 header {
-    padding: 20px 7% 5px;
+    padding: 18px 7%;
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
+    min-height: 100px;
 }
 
 .logo {
-    width: 145px;
+    width: 175px;
     height: auto;
     object-fit: contain;
+}
+
+.discord-button {
+    position: absolute;
+    right: 7%;
+    top: 50%;
+    transform: translateY(-50%);
+    text-decoration: none;
+    color: #FFFFFF;
+    background: #D96A29;
+    padding: 12px 20px;
+    border-radius: 7px;
+    font-size: 13px;
+    font-weight: 700;
+    transition: 0.3s ease;
+}
+
+.discord-button:hover {
+    background: #F07832;
+    transform: translateY(-50%) translateY(-3px);
+    box-shadow: 0 5px 20px rgba(240,120,50,0.2);
+}
+
+.discord-button span {
+    margin-left: 7px;
+    font-size: 16px;
 }
 
 main {
@@ -39,11 +67,11 @@ main {
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    padding: 20px 7% 45px;
+    padding: 35px 7% 45px;
 }
 
 .development {
-    color: #D96A29;
+    color: #F07832;
     font-size: 13px;
     font-weight: 700;
     letter-spacing: 5px;
@@ -52,7 +80,7 @@ main {
 }
 
 h1 {
-    color: #191919;
+    color: #FFFFFF;
     font-size: clamp(32px, 5vw, 48px);
     font-weight: 700;
     letter-spacing: 2px;
@@ -60,7 +88,7 @@ h1 {
 }
 
 .subtitle {
-    color: #777777;
+    color: #A5A5A5;
     font-size: 15px;
     margin-top: 14px;
     text-align: center;
@@ -77,9 +105,9 @@ h1 {
 
 .nav-card {
     text-decoration: none;
-    color: #191919;
-    background: #FFFFFF;
-    border: 1px solid #E8E6E1;
+    color: #F5F5F5;
+    background: #202020;
+    border: 1px solid #333333;
     border-radius: 10px;
     padding: 25px 16px;
     text-align: center;
@@ -88,9 +116,9 @@ h1 {
 
 .nav-card:hover {
     border-color: #F07832;
-    background: #FFF9F4;
+    background: #29211C;
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
 }
 
 .nav-card h2 {
@@ -99,20 +127,39 @@ h1 {
 }
 
 .nav-card p {
-    color: #858585;
+    color: #999999;
     font-size: 12px;
     margin-top: 10px;
 }
 
 footer {
     text-align: center;
-    color: #999999;
+    color: #777777;
     font-size: 12px;
     padding: 25px;
     letter-spacing: 2px;
 }
 
 @media (max-width: 600px) {
+    header {
+        padding: 18px 5%;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .logo {
+        width: 155px;
+    }
+
+    .discord-button {
+        position: static;
+        transform: none;
+    }
+
+    .discord-button:hover {
+        transform: translateY(-3px);
+    }
+
     .navigation {
         grid-template-columns: 1fr;
         max-width: 350px;
@@ -120,7 +167,7 @@ footer {
     }
 
     main {
-        padding-top: 15px;
+        padding-top: 25px;
     }
 }
 </style>
@@ -131,6 +178,13 @@ footer {
 <header>
     <img src="dccc7b68601b277504ee1adb317e885d.webp"
          alt="GK Gaming Logo" class="logo">
+
+    <a href="https://discord.gg/SZFxAamC3Y"
+       class="discord-button"
+       target="_blank"
+       rel="noopener noreferrer">
+        JOIN DISCORD <span>→</span>
+    </a>
 </header>
 
 <main>
