@@ -5,8 +5,18 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GK Gaming | Official Website</title>
+<link rel="icon" type="image/png" href="favicon.png">
 
 <style>
+:root {
+    --bg: #151515;
+    --panel: #202020;
+    --text: #fff;
+    --muted: #bdbdbd;
+    --orange: #f07832;
+    --border: #353535;
+}
+
 * {
     margin: 0;
     padding: 0;
@@ -14,206 +24,295 @@
 }
 
 body {
-    background: #151515;
-    color: #F5F5F5;
-    font-family: Arial, Helvetica, sans-serif;
     min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    flex-direction: column;
 }
 
-header {
-    padding: 18px 7%;
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* NAVIGATION */
+
+nav {
+    min-height: 85px;
+    padding: 12px 6%;
     display: flex;
-    justify-content: center;
     align-items: center;
-    position: relative;
-    min-height: 100px;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    background: #111;
 }
 
 .logo {
     width: 175px;
-    height: auto;
+    height: 58px;
     object-fit: contain;
+    object-position: left center;
+    display: block;
 }
 
-.discord-button {
-    position: absolute;
-    right: 7%;
-    top: 50%;
-    transform: translateY(-50%);
-    text-decoration: none;
-    color: #FFFFFF;
-    background: #D96A29;
-    padding: 12px 20px;
-    border-radius: 7px;
-    font-size: 13px;
-    font-weight: 700;
-    transition: 0.3s ease;
-}
+/* HERO */
 
-.discord-button:hover {
-    background: #F07832;
-    transform: translateY(-50%) translateY(-3px);
-    box-shadow: 0 5px 20px rgba(240,120,50,0.2);
-}
-
-.discord-button span {
-    margin-left: 7px;
-    font-size: 16px;
-}
-
-main {
-    min-height: 65vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    padding: 35px 7% 45px;
-}
-
-.development {
-    color: #F07832;
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 5px;
+.hero {
     text-align: center;
-    margin-bottom: 18px;
+    padding: 75px 20px 55px;
+    background:
+        linear-gradient(rgba(10,10,10,.58), rgba(10,10,10,.92)),
+        url("https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=2000&q=85")
+        center 45% / cover no-repeat;
 }
 
-h1 {
-    color: #FFFFFF;
-    font-size: clamp(32px, 5vw, 48px);
-    font-weight: 700;
+.status {
+    display: inline-block;
+    border: 1px solid rgba(240,120,50,.6);
+    color: var(--orange);
+    padding: 7px 16px;
+    border-radius: 30px;
+    font-size: 12px;
+    font-weight: bold;
     letter-spacing: 2px;
-    text-align: center;
+    margin-bottom: 24px;
 }
 
-.subtitle {
-    color: #A5A5A5;
-    font-size: 15px;
-    margin-top: 14px;
-    text-align: center;
+.hero h1 {
+    font-size: clamp(40px, 6vw, 65px);
+    line-height: 1.15;
+    margin-bottom: 17px;
 }
 
-.navigation {
+.hero h1 span {
+    color: var(--orange);
+}
+
+.hero p {
+    color: #ddd;
+    font-size: 18px;
+    max-width: 620px;
+    margin: auto;
+}
+
+/* THREE SECTIONS */
+
+.sections {
+    width: 88%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 25px 0 75px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 18px;
+    gap: 24px;
+}
+
+.section-card {
+    display: block;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    transition: border-color .2s;
+}
+
+.section-card:hover {
+    border-color: var(--orange);
+}
+
+.card-image {
     width: 100%;
-    max-width: 850px;
-    margin-top: 65px;
+    height: 205px;
+    display: block;
+    object-fit: cover;
+    object-position: center;
 }
 
-.nav-card {
-    text-decoration: none;
-    color: #F5F5F5;
-    background: #202020;
-    border: 1px solid #333333;
-    border-radius: 10px;
-    padding: 25px 16px;
-    text-align: center;
-    transition: 0.3s ease;
+.card-content {
+    padding: 24px;
 }
 
-.nav-card:hover {
-    border-color: #F07832;
-    background: #29211C;
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-}
-
-.nav-card h2 {
-    font-size: 15px;
-    letter-spacing: 1px;
-}
-
-.nav-card p {
-    color: #999999;
+.card-label {
+    color: var(--orange);
     font-size: 12px;
-    margin-top: 10px;
+    font-weight: bold;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
 }
+
+.card-content h2 {
+    font-size: 25px;
+    margin-bottom: 10px;
+}
+
+.card-content p {
+    color: var(--muted);
+    font-size: 16px;
+    min-height: 52px;
+}
+
+.card-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: var(--orange);
+    font-size: 15px;
+    font-weight: bold;
+}
+
+/* FOOTER */
 
 footer {
+    margin-top: auto;
+    border-top: 1px solid var(--border);
+    padding: 25px 15px;
     text-align: center;
-    color: #777777;
-    font-size: 12px;
-    padding: 25px;
-    letter-spacing: 2px;
+    color: #888;
+    font-size: 14px;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 850px) {
+    .sections {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .section-card:last-child {
+        grid-column: 1 / -1;
+    }
 }
 
 @media (max-width: 600px) {
-    header {
-        padding: 18px 5%;
-        flex-direction: column;
-        gap: 15px;
+    nav {
+        min-height: 75px;
+        padding: 12px 5%;
     }
 
     .logo {
-        width: 155px;
+        width: 145px;
+        height: 50px;
     }
 
-    .discord-button {
-        position: static;
-        transform: none;
+    nav .join-btn {
+        padding: 10px 13px;
+        font-size: 12px;
     }
 
-    .discord-button:hover {
-        transform: translateY(-3px);
+    .hero {
+        padding: 65px 18px 45px;
     }
 
-    .navigation {
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .hero p {
+        font-size: 16px;
+    }
+
+    .sections {
+        width: 90%;
         grid-template-columns: 1fr;
-        max-width: 350px;
-        margin-top: 40px;
+        padding-top: 15px;
     }
 
-    main {
-        padding-top: 25px;
+    .section-card:last-child {
+        grid-column: auto;
+    }
+
+    .card-image {
+        height: 190px;
     }
 }
+
 </style>
 </head>
 
 <body>
 
-<header>
-    <img src="dccc7b68601b277504ee1adb317e885d.webp"
-         alt="GK Gaming Logo" class="logo">
-
-    <a href="https://discord.gg/SZFxAamC3Y"
-       class="discord-button"
-       target="_blank"
-       rel="noopener noreferrer">
-        JOIN DISCORD <span>→</span>
+<nav>
+    <a href="index.html">
+        <img src="dccc7b68601b277504ee1adb317e885d.webp"
+             alt="GK Gaming Logo" class="logo">
     </a>
+
+    <a href="https://discord.gg/SZFxAamC3Y" class="join-btn">
+        JOIN DISCORD →
+    </a>
+</nav>
+
+<header class="hero">
+    <div class="status">UNDER DEVELOPMENT</div>
+
+    <h1>Something New<br>Is <span>Coming.</span></h1>
+
+    <p>
+        We're building something for gamers and communities.
+        Explore GK Gaming and discover what's coming next.
+    </p>
 </header>
 
-<main>
-    <p class="development">UNDER DEVELOPMENT</p>
+<main class="sections">
 
-    <h1>Something New Is Coming.</h1>
+    <!-- ABOUT US -->
 
-    <p class="subtitle">
-        We're building something special for our community.
-    </p>
+    <a href="about.html" class="section-card">
+        <img
+            class="card-image"
+            src="https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=900&q=85"
+            alt="Gaming setup">
 
-    <nav class="navigation">
+        <div class="card-content">
+            <div class="card-label">DISCOVER</div>
+            <h2>About Us</h2>
+            <p>
+                Get to know GK Gaming, our community,
+                what we offer and what we're all about.
+            </p>
+            <span class="card-link">EXPLORE ABOUT US →</span>
+        </div>
+    </a>
 
-        <a href="about.html" class="nav-card">
-            <h2>ABOUT US</h2>
-            <p>Discover GK Gaming</p>
-        </a>
+    <!-- MARKETPLACE -->
 
-        <a href="marketplace.html" class="nav-card">
-            <h2>MARKETPLACE</h2>
-            <p>Explore our marketplace</p>
-        </a>
+    <a href="marketplace.html" class="section-card">
+        <img
+            class="card-image"
+            src="https://images.unsplash.com/photo-1592478411213-6153e4ebc696?auto=format&fit=crop&w=900&q=85"
+            alt="Gaming equipment">
 
-        <a href="gk-plus.html" class="nav-card">
+        <div class="card-content">
+            <div class="card-label">EXPLORE</div>
+            <h2>Marketplace</h2>
+            <p>
+                Discover our marketplace and explore
+                what's available for the community.
+            </p>
+            <span class="card-link">VISIT MARKETPLACE →</span>
+        </div>
+    </a>
+
+    <!-- GK PLUS -->
+
+    <a href="gk-plus.html" class="section-card">
+        <img
+            class="card-image"
+            src="https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=900&q=85"
+            alt="Gaming community">
+
+        <div class="card-content">
+            <div class="card-label">EXCLUSIVE</div>
             <h2>GK+</h2>
-            <p>Discover exclusive experiences</p>
-        </a>
+            <p>
+                Discover GK+ and find out more
+                about what it has to offer.
+            </p>
+            <span class="card-link">DISCOVER GK+ →</span>
+        </div>
+    </a>
 
-    </nav>
 </main>
 
 <footer>
