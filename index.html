@@ -7,8 +7,8 @@
 
   <title>GK Gaming | Official Website</title>
 
-  <!-- GK Gaming Favicon -->
-  <link rel="icon" type="image/webp" href="dccc7b68601b277504ee1adb317e885d.webp">
+  <!-- GK-only browser favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23151515'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='Arial,sans-serif' font-size='31' font-weight='900' fill='%23f07832'%3EGK%3C/text%3E%3C/svg%3E">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,8 +49,8 @@
     /* HERO AND INTEGRATED HEADER */
 
     .hero {
-      min-height: 570px;
-      padding: 0 7% 70px;
+      min-height: 620px;
+      padding: 0 7% 55px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -68,7 +68,7 @@
         center 45% / cover no-repeat;
     }
 
-    /* HEADER SITS INSIDE THE HERO */
+    /* INTEGRATED NAVIGATION */
 
     nav {
       position: absolute;
@@ -80,7 +80,6 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 25px;
       z-index: 10;
     }
 
@@ -89,26 +88,6 @@
       height: auto;
       object-fit: contain;
       display: block;
-      flex-shrink: 0;
-    }
-
-    .nav-links {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 30px;
-    }
-
-    .nav-links a {
-      color: #e5e5e5;
-      font-size: 12px;
-      font-weight: 600;
-      transition: color 0.25s ease;
-      white-space: nowrap;
-    }
-
-    .nav-links a:hover {
-      color: var(--orange);
     }
 
     /* DISCORD BUTTON */
@@ -128,7 +107,6 @@
       letter-spacing: 1px;
       white-space: nowrap;
       transition: background 0.25s ease, color 0.25s ease;
-      flex-shrink: 0;
     }
 
     .discord-button:hover {
@@ -148,8 +126,19 @@
       position: relative;
       z-index: 1;
       max-width: 850px;
-      padding-top: 100px;
+      padding-top: 85px;
       animation: heroAppear 1s ease both;
+    }
+
+    @keyframes heroAppear {
+      from {
+        opacity: 0;
+        transform: translateY(25px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
     .eyebrow {
@@ -181,12 +170,52 @@
       line-height: 1.8;
     }
 
-    /* MAIN CONTENT */
+    /* SCROLL INDICATOR */
+
+    .scroll-indicator {
+      position: absolute;
+      bottom: 28px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 9px;
+      color: #dedede;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      white-space: nowrap;
+      z-index: 2;
+      transition: color 0.25s ease;
+    }
+
+    .scroll-indicator:hover {
+      color: var(--orange);
+    }
+
+    .scroll-arrow {
+      font-size: 23px;
+      color: var(--orange);
+      animation: arrowBounce 1.6s infinite ease-in-out;
+    }
+
+    @keyframes arrowBounce {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(8px);
+      }
+    }
+
+    /* MAIN SECTIONS */
 
     .sections {
       max-width: 1250px;
       margin: 0 auto;
       padding: 85px 7% 100px;
+      scroll-margin-top: 25px;
     }
 
     .section-heading {
@@ -296,44 +325,35 @@
 
     footer {
       border-top: 1px solid var(--border);
-      padding: 28px 7%;
+      padding: 30px 7%;
       text-align: center;
       color: #858585;
+    }
+
+    .footer-brand {
       font-size: 11px;
       font-weight: 700;
       letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+
+    .copyright {
+      font-size: 12px;
+      color: #777777;
+      letter-spacing: 0.3px;
     }
 
     /* RESPONSIVE */
 
     @media (max-width: 900px) {
-      nav {
-        padding-left: 5%;
-        padding-right: 5%;
-        gap: 15px;
-      }
-
-      .nav-links {
-        gap: 16px;
-      }
-
-      .nav-links a {
-        font-size: 11px;
-      }
-
       .logo {
         width: 125px;
-      }
-
-      .discord-button {
-        padding: 10px 12px;
-        font-size: 10px;
       }
     }
 
     @media (max-width: 650px) {
       .hero {
-        min-height: 540px;
+        min-height: 570px;
         padding-left: 6%;
         padding-right: 6%;
       }
@@ -341,25 +361,10 @@
       nav {
         min-height: 75px;
         padding: 12px 5%;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        row-gap: 12px;
       }
 
       .logo {
         width: 120px;
-      }
-
-      .nav-links {
-        order: 3;
-        width: 100%;
-        justify-content: center;
-        gap: 25px;
-        padding-bottom: 8px;
-      }
-
-      .nav-links a {
-        font-size: 11px;
       }
 
       .discord-button {
@@ -368,7 +373,7 @@
       }
 
       .hero-content {
-        padding-top: 115px;
+        padding-top: 75px;
       }
 
       .hero h1 {
@@ -423,10 +428,11 @@
 
 <body>
 
-  <!-- HERO WITH INTEGRATED NAVIGATION -->
-
   <main>
-    <section class="hero">
+
+    <!-- HERO WITH INTEGRATED HEADER -->
+
+    <section class="hero" id="home">
 
       <nav>
         <a href="index.html" aria-label="GK Gaming Home">
@@ -436,12 +442,6 @@
             alt="GK Gaming Logo"
           >
         </a>
-
-        <div class="nav-links">
-          <a href="about.html">ABOUT US</a>
-          <a href="marketplace.html">MARKETPLACE</a>
-          <a href="gk-plus.html">GK+</a>
-        </div>
 
         <a
           class="discord-button"
@@ -455,6 +455,8 @@
           JOIN DISCORD
         </a>
       </nav>
+
+      <!-- HERO TEXT -->
 
       <div class="hero-content">
         <div class="eyebrow">UNDER DEVELOPMENT</div>
@@ -470,11 +472,18 @@
         </p>
       </div>
 
+      <!-- SCROLL PROMPT -->
+
+      <a href="#explore" class="scroll-indicator">
+        <span>SCROLL TO EXPLORE</span>
+        <span class="scroll-arrow">↓</span>
+      </a>
+
     </section>
 
     <!-- MAIN SECTIONS -->
 
-    <section class="sections">
+    <section class="sections" id="explore">
 
       <div class="section-heading reveal">
         <h2>Explore GK Gaming</h2>
@@ -521,12 +530,16 @@
 
       </div>
     </section>
+
   </main>
 
   <!-- FOOTER -->
 
   <footer>
-    GK GAMING&nbsp; | &nbsp;EST. 2026
+    <div class="footer-brand">GK GAMING</div>
+    <div class="copyright">
+      © 2026 GK Gaming. All rights reserved.
+    </div>
   </footer>
 
   <!-- SCROLL ANIMATION SCRIPT -->
