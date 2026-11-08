@@ -1,0 +1,655 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About Us | GK Gaming</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+    background: #151515;
+    color: #F5F5F5;
+    font-family: Arial, Helvetica, sans-serif;
+    overflow-x: hidden;
+}
+
+header {
+    padding: 17px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #292929;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background: rgba(21,21,21,0.94);
+    backdrop-filter: blur(12px);
+}
+
+.logo { width: 125px; }
+
+nav {
+    display: flex;
+    align-items: center;
+    gap: 23px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #BBBBBB;
+    font-size: 12px;
+    transition: 0.3s;
+}
+
+nav a:hover, nav a.active { color: #F07832; }
+
+.discord {
+    background: #D96A29;
+    color: white !important;
+    padding: 11px 17px;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.discord:hover {
+    background: #F07832;
+    transform: translateY(-2px);
+}
+
+.hero {
+    text-align: center;
+    padding: 100px 20px 85px;
+    animation: enter 0.9s ease both;
+}
+
+.tag, .section-label {
+    color: #F07832;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    margin-bottom: 18px;
+}
+
+.hero h1 {
+    font-size: clamp(37px, 6vw, 65px);
+    letter-spacing: -1px;
+}
+
+.hero p {
+    color: #999;
+    max-width: 650px;
+    line-height: 1.9;
+    margin: 20px auto 0;
+    font-size: 15px;
+}
+
+.section {
+    max-width: 1050px;
+    margin: auto;
+    padding: 55px 25px;
+}
+
+.section h2 {
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+.section-text {
+    color: #A0A0A0;
+    line-height: 1.9;
+    max-width: 850px;
+    font-size: 14px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-top: 30px;
+}
+
+.card {
+    background: #202020;
+    border: 1px solid #333;
+    border-radius: 10px;
+    padding: 25px;
+    transition: 0.35s ease;
+}
+
+.card:hover {
+    transform: translateY(-6px);
+    border-color: #D96A29;
+    background: #25211E;
+}
+
+.card h3 {
+    font-size: 15px;
+    margin-bottom: 11px;
+}
+
+.card p {
+    color: #999;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+.card .emoji {
+    font-size: 21px;
+    margin-bottom: 15px;
+}
+
+.why-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 14px;
+    margin-top: 25px;
+}
+
+.why-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: #202020;
+    border: 1px solid #303030;
+    padding: 18px;
+    border-radius: 8px;
+    color: #C5C5C5;
+    font-size: 13px;
+    line-height: 1.7;
+    transition: 0.3s;
+}
+
+.why-item:hover {
+    border-color: #D96A29;
+    transform: translateX(4px);
+}
+
+.why-item span { color: #F07832; }
+
+.join {
+    max-width: 950px;
+    margin: 45px auto 65px;
+    padding: 55px 25px;
+    text-align: center;
+    background: #211D1A;
+    border: 1px solid #39302A;
+    border-radius: 12px;
+}
+
+.join h2 {
+    font-size: 30px;
+    margin-bottom: 15px;
+}
+
+.join p {
+    color: #AAA;
+    font-size: 14px;
+    line-height: 1.8;
+    margin-bottom: 22px;
+}
+
+.join .thanks {
+    color: #F07832;
+    font-weight: bold;
+    margin-top: 22px;
+}
+
+.join a {
+    display: inline-block;
+    text-decoration: none;
+    background: #D96A29;
+    color: white;
+    padding: 13px 24px;
+    border-radius: 6px;
+    font-weight: bold;
+    font-size: 13px;
+    transition: 0.3s;
+}
+
+.join a:hover {
+    background: #F07832;
+    transform: translateY(-3px);
+}
+
+.rules-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 13px;
+    margin-top: 30px;
+}
+
+.rule {
+    background: #202020;
+    border: 1px solid #303030;
+    border-radius: 9px;
+    padding: 20px;
+    transition: 0.3s ease;
+}
+
+.rule:hover {
+    border-color: #D96A29;
+    transform: translateY(-4px);
+}
+
+.rule h3 {
+    font-size: 14px;
+    margin-bottom: 10px;
+    color: #F0F0F0;
+}
+
+.rule p {
+    color: #999;
+    font-size: 12px;
+    line-height: 1.8;
+}
+
+.rule-number {
+    color: #F07832;
+    font-weight: bold;
+    margin-right: 7px;
+}
+
+.enforcement {
+    background: #202020;
+    border: 1px solid #333;
+    padding: 27px;
+    border-radius: 10px;
+    margin-top: 30px;
+}
+
+.enforcement h3 {
+    margin-bottom: 15px;
+    font-size: 18px;
+}
+
+.penalties {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin: 20px 0;
+}
+
+.penalty {
+    background: #2B2B2B;
+    color: #D0D0D0;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 12px;
+}
+
+.enforcement p {
+    color: #999;
+    font-size: 13px;
+    line-height: 1.9;
+}
+
+.final-note {
+    color: #F07832 !important;
+    font-weight: bold;
+    margin-top: 15px;
+}
+
+footer {
+    border-top: 1px solid #292929;
+    padding: 28px;
+    text-align: center;
+    color: #777;
+    font-size: 11px;
+    letter-spacing: 2px;
+}
+
+/* Animations */
+
+@keyframes enter {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media(max-width: 650px) {
+    header {
+        flex-direction: column;
+        gap: 17px;
+    }
+
+    nav {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 14px;
+    }
+
+    nav a { font-size: 10px; }
+
+    .hero { padding: 75px 20px; }
+
+    .cards, .why-list, .rules-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .join { margin: 30px 18px 50px; }
+}
+
+@media(prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <a href="index.html">
+        <img src="dccc7b68601b277504ee1adb317e885d.webp"
+             alt="GK Gaming Logo" class="logo">
+    </a>
+
+    <nav>
+        <a href="index.html">HOME</a>
+        <a href="about.html" class="active">ABOUT US</a>
+        <a href="marketplace.html">MARKETPLACE</a>
+        <a href="gk-plus.html">GK+</a>
+        <a href="https://discord.gg/SZFxAamC3Y"
+           class="discord" target="_blank"
+           rel="noopener noreferrer">JOIN DISCORD →</a>
+    </nav>
+</header>
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero">
+    <div class="tag">GET TO KNOW US</div>
+    <h1>More Than Just Gaming.</h1>
+    <p>
+        A place to game, chill, hang out and connect.
+        Discover what makes GK Gaming a community worth being part of.
+    </p>
+</section>
+
+<!-- ABOUT GK GAMING -->
+
+<section class="section reveal">
+    <div class="section-label">🎮 &nbsp; ABOUT GK GAMING</div>
+    <h2>Welcome to GK Gaming.</h2>
+    <p class="section-text">
+        <strong style="color:#F5F5F5">
+        Welcome to GK Gaming — your place to game, chill, hang out and connect!
+        </strong>
+        <br><br>
+        We're a gaming and social community where you can meet new people,
+        make friends, play games, share memes and enjoy conversations.
+        <br><br>
+        Whether you're a hardcore gamer or just looking for somewhere
+        to chill, there's a place for you here.
+    </p>
+</section>
+
+<!-- WHAT WE OFFER -->
+
+<section class="section reveal">
+    <div class="section-label">🌟 &nbsp; WHAT WE OFFER</div>
+    <h2>There's Something For Everyone.</h2>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="emoji">🎮</div>
+            <h3>Gaming</h3>
+            <p>Find teammates, play together and share your gaming experiences.</p>
+        </div>
+
+        <div class="card">
+            <div class="emoji">💬</div>
+            <h3>Hangouts</h3>
+            <p>Chat with members, make friends and talk about anything.</p>
+        </div>
+
+        <div class="card">
+            <div class="emoji">😂</div>
+            <h3>Memes & Entertainment</h3>
+            <p>Share funny moments, memes and random content.</p>
+        </div>
+
+        <div class="card">
+            <div class="emoji">🎧</div>
+            <h3>Chill VCs</h3>
+            <p>Relax, listen to music and hang out with the community.</p>
+        </div>
+
+        <div class="card">
+            <div class="emoji">🎁</div>
+            <h3>Monthly Giveaways</h3>
+            <p>We host giveaways every month with exciting rewards for our members!</p>
+        </div>
+
+        <div class="card">
+            <div class="emoji">🎉</div>
+            <h3>Community Events</h3>
+            <p>Participate in activities, events and fun community experiences.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- WHY JOIN -->
+
+<section class="section reveal">
+    <div class="section-label">💎 &nbsp; WHY JOIN US?</div>
+    <h2>Make Yourself At Home.</h2>
+
+    <div class="why-list">
+        <div class="why-item">
+            <span>✦</span> Meet new people and make genuine friendships.
+        </div>
+
+        <div class="why-item">
+            <span>✦</span> Find people to play your favourite games with.
+        </div>
+
+        <div class="why-item">
+            <span>✦</span> Enjoy a welcoming and relaxed community.
+        </div>
+
+        <div class="why-item">
+            <span>✦</span> Participate in monthly giveaways.
+        </div>
+
+        <div class="why-item">
+            <span>✦</span> Have fun without the pressure to be constantly active.
+        </div>
+    </div>
+</section>
+
+<!-- JOIN COMMUNITY -->
+
+<section class="join reveal">
+    <div class="section-label">👋 &nbsp; JOIN THE COMMUNITY</div>
+    <h2>Become Part of GK Gaming.</h2>
+
+    <p>
+        We're glad to have you here! Explore the server, introduce yourself,
+        meet the members and make yourself at home.
+    </p>
+
+    <a href="https://discord.gg/SZFxAamC3Y"
+       target="_blank" rel="noopener noreferrer">
+        JOIN OUR DISCORD →
+    </a>
+
+    <p class="thanks">
+        Thanks for being part of GK Gaming. ❤️
+    </p>
+</section>
+
+<!-- SERVER RULES -->
+
+<section class="section reveal">
+    <div class="section-label">📜 &nbsp; GK GAMING</div>
+    <h2>Server Rules.</h2>
+
+    <p class="section-text">
+        Welcome to GK Gaming! A place to game, chill, hang out,
+        make friends and have a good time. Keep these rules in mind.
+    </p>
+
+    <div class="rules-grid">
+
+        <div class="rule">
+            <h3><span class="rule-number">01.</span> Respect Everyone</h3>
+            <p>Treat everyone with respect. No harassment, bullying, targeted personal attacks or unnecessary toxicity.</p>
+        </div>
+
+        <div class="rule">
+            <h3><span class="rule-number">02.</span> No Discrimination</h3>
+            <p>Racism, sexism, hate speech or discrimination based on someone's identity will not be tolerated.</p>
+        </div>
+
+        <div class="rule">
+            <h3><span class="rule-number">03.</span> No Spamming</h3>
+            <p>Avoid message flooding, excessive emojis, repeated messages, unwanted pings and excessive caps.</p>
+        </div>
+
+        <div class="rule">
+            <h3><span class="rule-number">04.</span> No NSFW Content</h3>
+            <p>Pornography, explicit sexual content and inappropriate gore are strictly prohibited.</p>
+        </div>
+
+        <div class="rule">
+            <h3><span class="rule-number">05.</span> No Unnecessary Drama</h3>
+            <p>Avoid creating unnecessary conflicts, starting arguments or bringing personal drama into the community.</p>
+        </div>
+
+        <div class="rule">
+            <h3><span class="rule-number">06.</span> Use the Correct Channels</h3>
+            <p>Keep conversations relevant to their respective channels. Avoid derailing discussions or flooding unrelated channels.</p>
+        </div>
+
+        <div class="rule">
+            <h3><span class="rule-number">07.</span> Voice Chat Etiquette</h3>
+            <p>No mic spamming, ear-rape audio, soundboard abuse or intentionally disrupting voice conversations.</p>
+        </div>
+
+        <div class="rule">
+            <h3><span class="rule-number">08.</span> No Scamming or Malicious Links</h3>
+            <p>Phishing, suspicious downloads, scams, token grabbers and malicious links are strictly prohibited.</p>
+        </div>
+
+        <div class="rule">
+            <h3><span class="rule-number">09.</span> Respect Staff Decisions</h3>
+            <p>Follow moderator instructions. If you disagree with a decision, discuss it privately and respectfully.</p>
+        </div>
+
+        <div class="rule">
+            <h3><span class="rule-number">10.</span> No Impersonation</h3>
+            <p>Do not impersonate staff, other members or public figures to mislead others.</p>
+        </div>
+
+        <div class="rule">
+            <h3><span class="rule-number">11.</span> Mild Swearing Is Allowed</h3>
+            <p>Casual swearing, friendly banter and jokes are perfectly fine. However, excessive abusive language, targeted insults, harassment and threats are not allowed.</p>
+        </div>
+
+        <div class="rule">
+            <h3><span class="rule-number">12.</span> Have Fun</h3>
+            <p>This is a chill gaming and hangout community. Make friends, play games, have conversations and enjoy yourself. Nobody is forced to be active.</p>
+        </div>
+
+    </div>
+</section>
+
+<!-- RULE ENFORCEMENT -->
+
+<section class="section reveal">
+    <div class="section-label">⚖️ &nbsp; RULE ENFORCEMENT</div>
+    <h2>Actions Against Violations.</h2>
+
+    <div class="enforcement">
+        <h3>Consequences of Breaking Rules</h3>
+
+        <p>
+            Depending on the severity and frequency of violations,
+            staff may issue:
+        </p>
+
+        <div class="penalties">
+            <div class="penalty">Verbal warning</div>
+            <div class="penalty">Official warning</div>
+            <div class="penalty">Timeout</div>
+            <div class="penalty">Kick</div>
+            <div class="penalty">Temporary ban</div>
+            <div class="penalty">Permanent ban</div>
+        </div>
+
+        <p>
+            Staff reserve the right to take appropriate action against
+            behaviour that disrupts the community, even if it is not
+            explicitly listed above.
+        </p>
+
+        <p class="final-note">
+            By remaining in GK Gaming, you agree to follow these rules.
+            Enjoy your stay! 🎮
+        </p>
+    </div>
+</section>
+
+</main>
+
+<footer>
+    GK GAMING &nbsp; | &nbsp; EST. 2026
+</footer>
+
+<script>
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+        }
+    });
+}, {
+    threshold: 0.12
+});
+
+document.querySelectorAll('.reveal').forEach(section => {
+    observer.observe(section);
+});
+</script>
+
+</body>
+</html>
