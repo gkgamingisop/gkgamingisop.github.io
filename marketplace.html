@@ -1,1 +1,935 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Marketplace | GK Gaming</title>
+
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23151515'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='Arial,sans-serif' font-size='31' font-weight='900' fill='%23f07832'%3EGK%3C/text%3E%3C/svg%3E">
+
+<style>
+:root {
+    --bg: #151515;
+    --panel: #202020;
+    --panel-light: #262626;
+    --text: #ffffff;
+    --muted: #bdbdbd;
+    --orange: #f07832;
+    --yellow: #ffc857;
+    --border: #353535;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.65;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+.container {
+    width: 88%;
+    max-width: 1250px;
+    margin: auto;
+}
+
+.accent {
+    color: var(--orange);
+}
+
+/* NAVIGATION */
+
+nav {
+    min-height: 86px;
+    padding: 12px 5%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    background: #111;
+    border-bottom: 1px solid var(--border);
+    position: relative;
+    z-index: 10;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.logo {
+    display: block;
+    width: 185px;
+    height: 58px;
+    object-fit: contain;
+    object-position: left center;
+}
+
+.nav-links {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 32px;
+    flex: 1;
+}
+
+.nav-links a {
+    color: #ddd;
+    font-size: 15px;
+    white-space: nowrap;
+    transition: color .2s;
+}
+
+.nav-links a:hover {
+    color: var(--orange);
+}
+
+.join-btn {
+    display: inline-block;
+    background: var(--orange);
+    color: white !important;
+    padding: 12px 23px;
+    border-radius: 6px;
+    font-weight: bold;
+    white-space: nowrap;
+    transition: background .2s, transform .2s;
+}
+
+.join-btn:hover {
+    background: #d45d20;
+    transform: translateY(-2px);
+}
+
+/* HERO */
+
+.hero {
+    min-height: 410px;
+    display: flex;
+    align-items: center;
+    background:
+        linear-gradient(90deg,
+        rgba(10,10,10,.96) 0%,
+        rgba(10,10,10,.78) 45%,
+        rgba(10,10,10,.25) 100%),
+        url("https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=2000&q=85")
+        center 48% / cover no-repeat;
+    border-bottom: 1px solid var(--border);
+}
+
+.hero-content {
+    width: 88%;
+    max-width: 1250px;
+    margin: auto;
+    padding: 70px 0;
+}
+
+.eyebrow,
+.section-label {
+    color: var(--orange);
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 14px;
+    font-weight: bold;
+    margin-bottom: 12px;
+}
+
+.hero h1 {
+    font-size: clamp(48px, 6vw, 76px);
+    line-height: 1.08;
+    max-width: 750px;
+}
+
+.hero p {
+    color: #e2e2e2;
+    font-size: 20px;
+    margin-top: 18px;
+    max-width: 650px;
+}
+
+/* INTRO */
+
+.intro {
+    padding-top: 65px;
+    padding-bottom: 25px;
+}
+
+.intro h2 {
+    font-size: 34px;
+    margin-bottom: 12px;
+}
+
+.intro p {
+    color: var(--muted);
+    font-size: 18px;
+    max-width: 800px;
+}
+
+/* PRODUCT SECTIONS */
+
+.products-section {
+    padding: 48px 0 25px;
+}
+
+.section-heading {
+    margin-bottom: 25px;
+}
+
+.section-heading h2 {
+    font-size: 30px;
+    line-height: 1.25;
+    margin-bottom: 8px;
+}
+
+.section-heading p {
+    color: var(--muted);
+    font-size: 16px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.product-card {
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 11px;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 190px;
+    transition: transform .25s ease, border-color .25s ease,
+                background .25s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--orange);
+    background: var(--panel-light);
+}
+
+.product-card h3 {
+    font-size: 20px;
+    margin-bottom: 7px;
+}
+
+.product-card p {
+    color: var(--muted);
+    font-size: 15px;
+    margin-bottom: 18px;
+}
+
+.price {
+    color: var(--yellow);
+    font-size: 23px;
+    font-weight: bold;
+}
+
+.price small {
+    color: var(--muted);
+    font-size: 13px;
+    font-weight: normal;
+}
+
+.product-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 45px 0 0;
+}
+
+/* PING LABEL */
+
+.ping-label {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: var(--orange);
+    background: rgba(240,120,50,.10);
+    border: 1px solid rgba(240,120,50,.25);
+    padding: 4px 9px;
+    border-radius: 5px;
+    margin-bottom: 12px;
+}
+
+/* GK+ PROMOTION */
+
+.gkplus-promo {
+    margin-top: 65px;
+    margin-bottom: 65px;
+    padding: 42px;
+    background:
+        linear-gradient(120deg, #292019, #24201a 55%, #30251b);
+    border: 1px solid #79502e;
+    border-radius: 14px;
+    position: relative;
+    overflow: hidden;
+}
+
+.gkplus-promo::after {
+    content: "";
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    right: -75px;
+    top: -100px;
+    border-radius: 50%;
+    background: rgba(240,120,50,.09);
+    pointer-events: none;
+}
+
+.promo-tag {
+    display: inline-block;
+    color: #151515;
+    background: var(--yellow);
+    padding: 6px 12px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+}
+
+.gkplus-promo h2 {
+    font-size: 34px;
+    margin-bottom: 12px;
+}
+
+.gkplus-promo p {
+    color: #d5d0c9;
+    font-size: 17px;
+    max-width: 750px;
+    margin-bottom: 22px;
+}
+
+.gkplus-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 9px;
+    padding: 12px 20px;
+    background: var(--orange);
+    border-radius: 6px;
+    color: white;
+    font-weight: bold;
+    transition: background .2s, transform .2s;
+}
+
+.gkplus-link:hover {
+    background: #d45d20;
+    transform: translateY(-2px);
+}
+
+/* PURCHASE INFORMATION */
+
+.purchase {
+    padding: 55px 0;
+    border-top: 1px solid var(--border);
+    border-bottom: 1px solid var(--border);
+    text-align: center;
+}
+
+.purchase h2 {
+    font-size: 32px;
+    margin-bottom: 12px;
+}
+
+.purchase p {
+    color: var(--muted);
+    font-size: 17px;
+    max-width: 750px;
+    margin: 0 auto 20px;
+}
+
+.ticket-note {
+    display: inline-block;
+    padding: 13px 20px;
+    background: var(--panel);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: #eee;
+    font-size: 15px;
+}
+
+.ticket-note strong {
+    color: var(--orange);
+}
+
+/* FINAL COMMUNITY BANNER */
+
+.community {
+    min-height: 280px;
+    display: flex;
+    align-items: center;
+    background:
+        linear-gradient(90deg,
+        rgba(10,10,10,.94),
+        rgba(10,10,10,.62)),
+        url("https://images.unsplash.com/photo-1511512578047-dfb367046420?auto=format&fit=crop&w=2000&q=85")
+        center 50% / cover no-repeat;
+    border-top: 1px solid #57321f;
+    border-bottom: 1px solid #57321f;
+}
+
+.community-inner {
+    width: 88%;
+    max-width: 1250px;
+    margin: auto;
+    padding: 60px 0;
+}
+
+.community h2 {
+    font-size: 40px;
+    margin-bottom: 12px;
+}
+
+.community p {
+    color: #e0e0e0;
+    font-size: 18px;
+    max-width: 700px;
+    margin-bottom: 24px;
+}
+
+/* FOOTER */
+
+footer {
+    padding: 30px 15px;
+    text-align: center;
+    color: #888;
+    font-size: 14px;
+}
+
+/* ANIMATIONS */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(15px);
+    transition: opacity .6s ease, transform .6s ease;
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+
+    *, *::before, *::after {
+        transition: none !important;
+        animation: none !important;
+    }
+
+    .reveal {
+        opacity: 1;
+        transform: none;
+    }
+}
+
+/* TABLETS */
+
+@media (max-width: 900px) {
+    nav {
+        gap: 20px;
+    }
+
+    .logo {
+        width: 155px;
+        height: 52px;
+    }
+
+    .nav-links {
+        gap: 17px;
+    }
+
+    .nav-links a {
+        font-size: 13px;
+    }
+
+    .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* MOBILE */
+
+@media (max-width: 650px) {
+    nav {
+        padding: 15px 5%;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .logo {
+        width: 150px;
+        height: 48px;
+    }
+
+    .nav-links {
+        width: 100%;
+        flex: auto;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        gap: 12px;
+    }
+
+    .nav-links a {
+        font-size: 12px;
+    }
+
+    .join-btn {
+        padding: 9px 12px;
+    }
+
+    .hero {
+        min-height: 350px;
+        background-position: 60% center;
+    }
+
+    .hero-content,
+    .community-inner {
+        width: 90%;
+    }
+
+    .hero h1 {
+        font-size: 45px;
+    }
+
+    .hero p {
+        font-size: 17px;
+    }
+
+    .container {
+        width: 90%;
+    }
+
+    .intro {
+        padding-top: 45px;
+    }
+
+    .intro h2,
+    .section-heading h2 {
+        font-size: 27px;
+    }
+
+    .product-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .product-card {
+        min-height: 165px;
+    }
+
+    .gkplus-promo {
+        padding: 28px 22px;
+        margin-top: 45px;
+        margin-bottom: 45px;
+    }
+
+    .gkplus-promo h2 {
+        font-size: 27px;
+    }
+
+    .gkplus-promo p {
+        font-size: 15px;
+    }
+
+    .purchase h2 {
+        font-size: 27px;
+    }
+
+    .community h2 {
+        font-size: 31px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<!-- NAVIGATION -->
+
+<nav>
+    <a href="index.html" class="logo-link">
+        <img src="dccc7b68601b277504ee1adb317e885d.webp"
+             alt="GK Gaming Logo" class="logo">
+    </a>
+
+    <div class="nav-links">
+        <a href="index.html">HOME</a>
+        <a href="about.html">ABOUT US</a>
+        <a href="marketplace.html">MARKETPLACE</a>
+        <a href="gkplus.html">GK+</a>
+        <a href="https://discord.gg/SZFxAamC3Y" class="join-btn">
+            JOIN DISCORD →
+        </a>
+    </div>
+</nav>
+
+<!-- HERO -->
+
+<header class="hero">
+    <div class="hero-content">
+        <div class="eyebrow">GK Gaming Store</div>
+        <h1>GK Gaming <span class="accent">Marketplace.</span></h1>
+        <p>
+            Explore our available roles, services and promotions.
+            Find what you need and make the most of your GK Gaming experience.
+        </p>
+    </div>
+</header>
+
+<main>
+
+<!-- INTRODUCTION -->
+
+<section class="container intro reveal">
+    <div class="section-label">Browse the marketplace</div>
+    <h2>Explore What's <span class="accent">Available.</span></h2>
+    <p>
+        Browse our available services and roles below. Each listing includes
+        its price in Robux and the available options.
+    </p>
+</section>
+
+<!-- SPONSORED GIVEAWAYS -->
+
+<section class="container products-section reveal">
+    <div class="section-heading">
+        <div class="section-label">Promotions</div>
+        <h2>Sponsored <span class="accent">Giveaways.</span></h2>
+        <p>Get your giveaway featured in the GK Gaming community.</p>
+    </div>
+
+    <div class="product-grid">
+
+        <article class="product-card">
+            <div>
+                <h3>SPGW — No Ping</h3>
+                <p>Sponsored giveaway without a notification ping.</p>
+            </div>
+            <div class="price">100 <small>Robux</small></div>
+        </article>
+
+        <article class="product-card">
+            <div>
+                <h3>SPGW — @here Ping</h3>
+                <p>Sponsored giveaway with an @here notification.</p>
+            </div>
+            <div class="price">120 <small>Robux</small></div>
+        </article>
+
+        <article class="product-card">
+            <div>
+                <h3>SPGW — @everyone Ping</h3>
+                <p>Sponsored giveaway with an @everyone notification.</p>
+            </div>
+            <div class="price">150 <small>Robux</small></div>
+        </article>
+
+    </div>
+</section>
+
+<hr class="product-divider container">
+
+<!-- PAID ADVERTISEMENTS -->
+
+<section class="container products-section reveal">
+    <div class="section-heading">
+        <div class="section-label">Promotions</div>
+        <h2>Paid <span class="accent">Advertisements.</span></h2>
+        <p>Promote your server, community or project to our members.</p>
+    </div>
+
+    <div class="product-grid">
+
+        <article class="product-card">
+            <div>
+                <h3>Paid Advertisement — No Ping</h3>
+                <p>Your advertisement posted without a notification ping.</p>
+            </div>
+            <div class="price">80 <small>Robux</small></div>
+        </article>
+
+        <article class="product-card">
+            <div>
+                <h3>Paid Advertisement — @here Ping</h3>
+                <p>Your advertisement posted with an @here notification.</p>
+            </div>
+            <div class="price">100 <small>Robux</small></div>
+        </article>
+
+        <article class="product-card">
+            <div>
+                <h3>Paid Advertisement — @everyone Ping</h3>
+                <p>Your advertisement posted with an @everyone notification.</p>
+            </div>
+            <div class="price">120 <small>Robux</small></div>
+        </article>
+
+    </div>
+</section>
+
+<hr class="product-divider container">
+
+<!-- PAID CHANNELS -->
+
+<section class="container products-section reveal">
+    <div class="section-heading">
+        <div class="section-label">Promotions</div>
+        <h2>Paid <span class="accent">Channels.</span></h2>
+        <p>Get your content or promotional post featured in a dedicated channel.</p>
+    </div>
+
+    <div class="product-grid">
+
+        <article class="product-card">
+            <div>
+                <h3>Paid Channel — No Ping</h3>
+                <p>A dedicated promotional channel without a notification ping.</p>
+            </div>
+            <div class="price">150 <small>Robux</small></div>
+        </article>
+
+        <article class="product-card">
+            <div>
+                <h3>Paid Channel — @here Ping</h3>
+                <p>A dedicated promotional channel with an @here notification.</p>
+            </div>
+            <div class="price">175 <small>Robux</small></div>
+        </article>
+
+        <article class="product-card">
+            <div>
+                <h3>Paid Channel — @everyone Ping</h3>
+                <p>A dedicated promotional channel with an @everyone notification.</p>
+            </div>
+            <div class="price">200 <small>Robux</small></div>
+        </article>
+
+    </div>
+</section>
+
+<hr class="product-divider container">
+
+<!-- STANDALONE PING SERVICES -->
+
+<section class="container products-section reveal">
+    <div class="section-heading">
+        <div class="section-label">Notifications</div>
+        <h2>Standalone <span class="accent">Ping Services.</span></h2>
+        <p>Choose a notification option for your promotional needs.</p>
+    </div>
+
+    <div class="product-grid">
+
+        <article class="product-card">
+            <div>
+                <span class="ping-label">@HERE</span>
+                <h3>@here Ping</h3>
+                <p>Send a notification to members who are currently available.</p>
+            </div>
+            <div class="price">50 <small>Robux</small></div>
+        </article>
+
+        <article class="product-card">
+            <div>
+                <span class="ping-label">@EVERYONE</span>
+                <h3>@everyone Ping</h3>
+                <p>Send a notification to everyone in the server.</p>
+            </div>
+            <div class="price">100 <small>Robux</small></div>
+        </article>
+
+    </div>
+</section>
+
+<hr class="product-divider container">
+
+<!-- POSTAGE AND QUEUE SERVICES -->
+
+<section class="container products-section reveal">
+    <div class="section-heading">
+        <div class="section-label">Priority Services</div>
+        <h2>Postage & <span class="accent">Queue Services.</span></h2>
+        <p>Choose the service that suits your requirements.</p>
+    </div>
+
+    <div class="product-grid">
+
+        <article class="product-card">
+            <div>
+                <h3>Instant Postage / Skip Queue</h3>
+                <p>Get your post handled instantly without waiting in the regular queue.</p>
+            </div>
+            <div class="price">300 <small>Robux</small></div>
+        </article>
+
+        <article class="product-card">
+            <div>
+                <h3>Queue Bypass</h3>
+                <p>Bypass the regular queue and receive priority handling.</p>
+            </div>
+            <div class="price">200 <small>Robux</small></div>
+        </article>
+
+    </div>
+</section>
+
+<hr class="product-divider container">
+
+<!-- ROLES AND SERVICES -->
+
+<section class="container products-section reveal">
+    <div class="section-heading">
+        <div class="section-label">Community roles</div>
+        <h2>Roles & <span class="accent">Services.</span></h2>
+        <p>Explore the available roles within GK Gaming.</p>
+    </div>
+
+    <div class="product-grid">
+
+        <article class="product-card">
+            <div>
+                <h3>Ticket Support Role</h3>
+                <p>Get the Ticket Support role within the community.</p>
+            </div>
+            <div class="price">200 <small>Robux</small></div>
+        </article>
+
+        <article class="product-card">
+            <div>
+                <h3>Moderator Role</h3>
+                <p>Get the Moderator role within the community.</p>
+            </div>
+            <div class="price">200 <small>Robux</small></div>
+        </article>
+
+        <article class="product-card">
+            <div>
+                <h3>Administrator Role</h3>
+                <p>A high-level role, positioned one step below ownership in the server hierarchy.</p>
+            </div>
+            <div class="price">2,000 <small>Robux</small></div>
+        </article>
+
+    </div>
+</section>
+
+<!-- GK+ PREMIUM PROMOTION -->
+
+<section class="container reveal">
+    <div class="gkplus-promo">
+
+        <span class="promo-tag">GK+ PREMIUM OFFER</span>
+
+        <h2>Unlock More with <span class="accent">GK+.</span></h2>
+
+        <p>
+            Get <strong>50% off all products and services listed above</strong>
+            with this premium offer. Members can also find additional perks
+            and exclusive benefits on our GK+ page.
+        </p>
+
+        <a href="gkplus.html" target="_blank" rel="noopener noreferrer" class="gkplus-link">
+            EXPLORE GK+ →
+        </a>
+
+    </div>
+</section>
+
+<!-- PURCHASE INFORMATION -->
+
+<section class="purchase reveal">
+    <div class="container">
+
+        <div class="section-label">How to purchase</div>
+
+        <h2>Interested in <span class="accent">Something?</span></h2>
+
+        <p>
+            To purchase any Marketplace item or service, open a
+            <strong>Management Ticket</strong> in our Discord server.
+            Our support team will get back to you soon and assist you with your request.
+        </p>
+
+        <div class="ticket-note">
+            <strong>Important:</strong> All Marketplace purchases must be
+            handled through a Management Ticket.
+        </div>
+
+        <br><br>
+
+        <a href="https://discord.gg/SZFxAamC3Y" class="join-btn">
+            OPEN DISCORD →
+        </a>
+
+    </div>
+</section>
+
+<!-- FINAL COMMUNITY BANNER -->
+
+<section class="community reveal">
+    <div class="community-inner">
+
+        <div class="section-label">GK Gaming</div>
+
+        <h2>Be Part of <span class="accent">Something Bigger.</span></h2>
+
+        <p>
+            Explore our community, connect with members and make the most
+            of everything GK Gaming has to offer.
+        </p>
+
+        <a href="https://discord.gg/SZFxAamC3Y" class="join-btn">
+            JOIN GK GAMING →
+        </a>
+
+    </div>
+</section>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer>
+    © 2026 GK Gaming. All rights reserved.
+</footer>
+
+<!-- SCROLL ANIMATIONS -->
+
+<script>
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.08 });
+
+document.querySelectorAll(".reveal").forEach(element => {
+    observer.observe(element);
+});
+</script>
+
+</body>
+</html>
+
