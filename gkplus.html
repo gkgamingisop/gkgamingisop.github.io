@@ -1,1 +1,238 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GK+ | GK Gaming</title>
+
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23151515'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='Arial,sans-serif' font-size='31' font-weight='900' fill='%23f07832'%3EGK%3C/text%3E%3C/svg%3E">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      background: #151515;
+      color: #fff;
+      font-family: Arial, Helvetica, sans-serif;
+      overflow-x: hidden;
+    }
+
+    nav {
+      height: 85px;
+      padding: 0 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: white;
+      font-size: 21px;
+      font-weight: 800;
+    }
+
+    .logo img {
+      width: 43px;
+      height: 43px;
+      object-fit: contain;
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
+
+    .nav-links a {
+      color: #aaa;
+      text-decoration: none;
+      font-size: 13px;
+      transition: 0.3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links .active {
+      color: #f07832;
+    }
+
+    .hero {
+      min-height: calc(100vh - 145px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 40px 20px;
+    }
+
+    .eyebrow {
+      color: #f07832;
+      letter-spacing: 5px;
+      font-size: 11px;
+      font-weight: 700;
+      margin-bottom: 28px;
+    }
+
+    h1 {
+      font-size: clamp(55px, 10vw, 105px);
+      font-weight: 900;
+      letter-spacing: -5px;
+      background: linear-gradient(100deg, #f07832, #ffca55);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      margin-bottom: 20px;
+    }
+
+    .subtitle {
+      color: #aaa;
+      font-size: 17px;
+      line-height: 1.8;
+      max-width: 550px;
+    }
+
+    .coming-soon {
+      margin-top: 42px;
+      padding: 13px 27px;
+      border: 1px solid rgba(240,120,50,0.4);
+      border-radius: 50px;
+      color: #ffb45d;
+      font-size: 11px;
+      letter-spacing: 3px;
+      font-weight: 700;
+      background: rgba(240,120,50,0.07);
+    }
+
+    .back {
+      margin-top: 38px;
+      display: inline-block;
+      color: #fff;
+      text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.18);
+      padding: 13px 25px;
+      border-radius: 7px;
+      font-size: 13px;
+      transition: 0.3s;
+    }
+
+    .back:hover {
+      background: #f07832;
+      border-color: #f07832;
+      color: #151515;
+    }
+
+    footer {
+      min-height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #666;
+      font-size: 12px;
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 15px;
+      text-align: center;
+    }
+
+    @media (max-width: 650px) {
+      nav {
+        padding: 0 5%;
+        height: auto;
+        min-height: 75px;
+        flex-wrap: wrap;
+        gap: 15px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+      }
+
+      .nav-links {
+        gap: 15px;
+        flex-wrap: wrap;
+      }
+
+      .nav-links a {
+        font-size: 11px;
+      }
+
+      h1 {
+        letter-spacing: -3px;
+      }
+
+      .subtitle {
+        font-size: 14px;
+      }
+    }
+
+    @media (prefers-reduced-motion: no-preference) {
+      .hero > * {
+        animation: appear 0.8s ease both;
+      }
+
+      .hero > *:nth-child(2) { animation-delay: 0.1s; }
+      .hero > *:nth-child(3) { animation-delay: 0.2s; }
+      .hero > *:nth-child(4) { animation-delay: 0.3s; }
+      .hero > *:nth-child(5) { animation-delay: 0.4s; }
+
+      @keyframes appear {
+        from {
+          opacity: 0;
+          transform: translateY(20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="index.html" class="logo">
+      <img src="dccc7b68601b277504ee1adb317e885d.webp" alt="GK Gaming">
+      GK GAMING
+    </a>
+
+    <div class="nav-links">
+      <a href="index.html">HOME</a>
+      <a href="about.html">ABOUT US</a>
+      <a href="marketplace.html">MARKETPLACE</a>
+      <a href="gkplus.html" class="active">GK+</a>
+      <a href="https://discord.gg/SZFxAamC3Y" target="_blank" rel="noopener noreferrer">JOIN DISCORD</a>
+    </div>
+  </nav>
+
+  <main class="hero">
+    <div class="eyebrow">EXCLUSIVE • PREMIUM • GK GAMING</div>
+
+    <h1>GK+</h1>
+
+    <p class="subtitle">
+      Something exclusive is on its way.
+      We're working on bringing you more perks,
+      privileges and premium experiences within GK Gaming.
+    </p>
+
+    <div class="coming-soon">MORE INFORMATION WILL BE LISTED SOON</div>
+
+    <a href="index.html" class="back">← Back to Home</a>
+  </main>
+
+  <footer>
+    © 2026 GK Gaming. All rights reserved.
+  </footer>
+
+</body>
+</html>
