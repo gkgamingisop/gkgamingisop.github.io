@@ -2,601 +2,887 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>GK Gaming | Official Website</title>
-
-  <!-- GK-only favicon -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23151515'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='Arial,sans-serif' font-size='31' font-weight='900' fill='%23f07832'%3EGK%3C/text%3E%3C/svg%3E">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    :root {
-      --bg: #151515;
-      --panel: #202020;
-      --text: #ffffff;
-      --muted: #bdbdbd;
-      --orange: #f07832;
-      --border: #353535;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      min-height: 100vh;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    /* HERO */
-
-    .hero {
-      min-height: 620px;
-      padding: 0 7% 55px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-
-      background:
-        linear-gradient(
-          rgba(15, 15, 15, 0.70),
-          rgba(15, 15, 15, 0.88)
-        ),
-        url("https://images.unsplash.com/photo-1542751371-adc38448a05e?auto=format&fit=crop&w=2000&q=85")
-        center 45% / cover no-repeat;
-    }
-
-    /* NAVIGATION */
-
-    nav {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      min-height: 88px;
-      padding: 12px 7%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      z-index: 10;
-    }
-
-    .logo {
-      width: 145px;
-      height: auto;
-      object-fit: contain;
-      display: block;
-    }
-
-    /* DISCORD AND GIVEAWAY */
-
-    .nav-right {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 7px;
-    }
-
-    .discord-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-      padding: 11px 17px;
-      border: 1px solid var(--orange);
-      border-radius: 6px;
-      background: transparent;
-      color: var(--orange);
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 1px;
-      white-space: nowrap;
-      transition: background 0.25s ease, color 0.25s ease;
-    }
-
-    .discord-button:hover {
-      background: var(--orange);
-      color: #151515;
-    }
-
-    .discord-button svg {
-      width: 18px;
-      height: 18px;
-      flex-shrink: 0;
-    }
-
-    .giveaway-tag {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      color: #ffd36a;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 0.4px;
-      white-space: nowrap;
-    }
-
-    .giveaway-tag span {
-      color: #d0d0d0;
-      font-weight: 400;
-    }
-
-    /* HERO CONTENT */
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 850px;
-      padding-top: 85px;
-      animation: heroAppear 1s ease both;
-    }
-
-    @keyframes heroAppear {
-      from {
-        opacity: 0;
-        transform: translateY(25px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .eyebrow {
-      display: inline-block;
-      color: var(--orange);
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 4px;
-      margin-bottom: 27px;
-    }
-
-    .hero h1 {
-      font-size: clamp(42px, 6vw, 76px);
-      line-height: 1.08;
-      font-weight: 800;
-      letter-spacing: -3px;
-      margin-bottom: 22px;
-    }
-
-    .hero h1 span {
-      color: var(--orange);
-    }
-
-    .hero p {
-      max-width: 620px;
-      margin: 0 auto;
-      color: #d0d0d0;
-      font-size: 16px;
-      line-height: 1.8;
-    }
-
-    /* SCROLL INDICATOR */
-
-    .scroll-indicator {
-      position: absolute;
-      bottom: 28px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 9px;
-      color: #dedede;
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      white-space: nowrap;
-      z-index: 2;
-      transition: color 0.25s ease;
-    }
-
-    .scroll-indicator:hover {
-      color: var(--orange);
-    }
-
-    .scroll-arrow {
-      font-size: 23px;
-      color: var(--orange);
-      animation: arrowBounce 1.6s infinite ease-in-out;
-    }
-
-    @keyframes arrowBounce {
-      0%, 100% {
-        transform: translateY(0);
-      }
-      50% {
-        transform: translateY(8px);
-      }
-    }
-
-    /* MAIN SECTIONS */
-
-    .sections {
-      max-width: 1250px;
-      margin: 0 auto;
-      padding: 85px 7% 100px;
-      scroll-margin-top: 25px;
-    }
-
-    .section-heading {
-      text-align: center;
-      margin-bottom: 42px;
-    }
-
-    .section-heading h2 {
-      font-size: 30px;
-      font-weight: 800;
-      margin-bottom: 12px;
-    }
-
-    .section-heading p {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.7;
-    }
-
-    /* NAVIGATION CARDS */
-
-    .section-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .section-card {
-      min-height: 235px;
-      padding: 32px 28px;
-      background: var(--panel);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: border-color 0.3s ease,
-                  background 0.3s ease;
-    }
-
-    .section-card:hover {
-      border-color: var(--orange);
-      background: #252525;
-    }
-
-    .card-label {
-      color: var(--orange);
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 2px;
-      margin-bottom: 20px;
-    }
-
-    .section-card h3 {
-      font-size: 23px;
-      font-weight: 700;
-      margin-bottom: 13px;
-    }
-
-    .section-card p {
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.8;
-    }
-
-    .card-link {
-      margin-top: 27px;
-      font-size: 12px;
-      font-weight: 700;
-      color: var(--orange);
-      letter-spacing: 0.5px;
-    }
-
-    .card-link span {
-      display: inline-block;
-      margin-left: 5px;
-      transition: transform 0.2s ease;
-    }
-
-    .section-card:hover .card-link span {
-      transform: translateX(5px);
-    }
-
-    /* SCROLL REVEAL */
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s ease,
-                  transform 0.8s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .section-card:nth-child(2) {
-      transition-delay: 0.12s;
-    }
-
-    .section-card:nth-child(3) {
-      transition-delay: 0.24s;
-    }
-
-    /* FOOTER */
-
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 30px 7%;
-      text-align: center;
-      color: #858585;
-    }
-
-    .footer-brand {
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 2px;
-      margin-bottom: 10px;
-    }
-
-    .copyright {
-      font-size: 12px;
-      color: #777777;
-      letter-spacing: 0.3px;
-    }
-
-    /* RESPONSIVE */
-
-    @media (max-width: 900px) {
-      .logo {
-        width: 125px;
-      }
-    }
-
-    @media (max-width: 650px) {
-      .hero {
-        min-height: 570px;
-        padding-left: 6%;
-        padding-right: 6%;
-      }
-
-      nav {
-        min-height: 75px;
-        padding: 12px 5%;
-      }
-
-      .logo {
-        width: 120px;
-      }
-
-      .discord-button {
-        padding: 9px 11px;
-        font-size: 9px;
-      }
-
-      .giveaway-tag {
-        font-size: 8px;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-
-      .hero-content {
-        padding-top: 75px;
-      }
-
-      .hero h1 {
-        letter-spacing: -1.5px;
-      }
-
-      .hero p {
-        font-size: 14px;
-      }
-
-      .section-grid {
-        grid-template-columns: 1fr;
-      }
-
-      .section-card {
-        min-height: 195px;
-      }
-
-      .sections {
-        padding: 65px 6% 75px;
-      }
-
-      .section-heading h2 {
-        font-size: 26px;
-      }
-
-      .section-card:nth-child(2),
-      .section-card:nth-child(3) {
-        transition-delay: 0s;
-      }
-    }
-
-    /* REDUCED MOTION */
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      *, *::before, *::after {
-        animation-duration: 0.01ms !important;
-        transition-duration: 0.01ms !important;
-      }
-
-      .reveal {
-        opacity: 1;
-        transform: none;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>GK Gaming | Official Website</title>
+    <meta name="description" content="Welcome to GK Gaming — your place to game, chill, hang out and connect. Explore our community, marketplace and exclusive GK+ perks.">
+
+    <!-- GK Favicon -->
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23151515'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='Arial,sans-serif' font-size='31' font-weight='900' fill='%23f07832'%3EGK%3C/text%3E%3C/svg%3E">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg: #151515;
+            --panel: #202020;
+            --text: #ffffff;
+            --muted: #b5b5b5;
+            --orange: #f07832;
+            --yellow: #ffc857;
+            --border: rgba(255,255,255,0.08);
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        /* SHARED HEADER */
+
+        .site-header {
+            position: sticky;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 82px;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 8%;
+            background: rgba(17,17,17,0.82);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255,255,255,0.07);
+        }
+
+        .logo img {
+            width: 112px;
+            height: auto;
+            display: block;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 35px;
+        }
+
+        .nav-links a {
+            color: #b5b5b5;
+            font-size: 13px;
+            font-weight: 600;
+            transition: color 0.25s ease, transform 0.25s ease;
+            white-space: nowrap;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--orange);
+        }
+
+        .nav-links .join-btn {
+            color: #151515;
+            background: var(--orange);
+            padding: 11px 19px;
+            border-radius: 6px;
+            font-weight: 800;
+            transition: background 0.25s ease, transform 0.25s ease;
+        }
+
+        .nav-links .join-btn:hover {
+            color: #151515;
+            background: var(--yellow);
+            transform: translateY(-2px);
+        }
+
+        /* HERO */
+
+        .hero {
+            min-height: 660px;
+            padding: 90px 7% 100px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+
+            background:
+                linear-gradient(
+                    rgba(15,15,15,0.68),
+                    rgba(15,15,15,0.91)
+                ),
+                url("https://images.unsplash.com/photo-1598550476439-6847785fcea6?auto=format&fit=crop&w=2000&q=85")
+                center 50% / cover no-repeat;
+        }
+
+        .hero::before {
+            content: "";
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            background: rgba(240,120,50,0.09);
+            filter: blur(120px);
+            border-radius: 50%;
+            top: 15%;
+            left: 50%;
+            transform: translateX(-50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 900px;
+            animation: heroAppear 1s ease both;
+        }
+
+        @keyframes heroAppear {
+            from {
+                opacity: 0;
+                transform: translateY(25px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            color: var(--yellow);
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            margin-bottom: 28px;
+        }
+
+        .status-dot {
+            width: 7px;
+            height: 7px;
+            background: #65d68a;
+            border-radius: 50%;
+            box-shadow: 0 0 12px rgba(101,214,138,0.7);
+        }
+
+        .hero h1 {
+            font-size: clamp(45px, 7vw, 82px);
+            line-height: 1.08;
+            font-weight: 900;
+            letter-spacing: -3.5px;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 span {
+            color: var(--orange);
+        }
+
+        .hero-description {
+            max-width: 650px;
+            margin: 0 auto;
+            color: #d0d0d0;
+            font-size: 16px;
+            line-height: 1.9;
+        }
+
+        /* HERO BUTTONS */
+
+        .hero-actions {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 36px;
+        }
+
+        .hero-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 23px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.6px;
+            transition: transform 0.25s ease, background 0.25s ease, border-color 0.25s ease;
+        }
+
+        .hero-btn.primary {
+            background: var(--orange);
+            color: #151515;
+        }
+
+        .hero-btn.primary:hover {
+            background: var(--yellow);
+            transform: translateY(-3px);
+        }
+
+        .hero-btn.secondary {
+            border: 1px solid rgba(255,255,255,0.25);
+            color: white;
+            background: rgba(255,255,255,0.04);
+        }
+
+        .hero-btn.secondary:hover {
+            border-color: var(--orange);
+            color: var(--orange);
+            transform: translateY(-3px);
+        }
+
+        /* GIVEAWAY ANNOUNCEMENT */
+
+        .giveaway-strip {
+            max-width: 950px;
+            width: calc(100% - 40px);
+            margin: -1px auto 0;
+            position: relative;
+            z-index: 3;
+            padding: 19px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            background: linear-gradient(
+                110deg,
+                rgba(240,120,50,0.13),
+                rgba(255,200,87,0.07)
+            );
+            border: 1px solid rgba(240,120,50,0.3);
+            border-radius: 9px;
+            text-align: center;
+        }
+
+        .giveaway-icon {
+            font-size: 19px;
+        }
+
+        .giveaway-strip strong {
+            color: var(--yellow);
+            font-size: 12px;
+            letter-spacing: 0.8px;
+        }
+
+        .giveaway-strip span {
+            color: #c8c8c8;
+            font-size: 12px;
+        }
+
+        /* EXPLORE SECTIONS */
+
+        .sections {
+            max-width: 1250px;
+            margin: 0 auto;
+            padding: 100px 7% 110px;
+            scroll-margin-top: 35px;
+        }
+
+        .section-heading {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-heading .small-label {
+            color: var(--orange);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 3px;
+            margin-bottom: 14px;
+        }
+
+        .section-heading h2 {
+            font-size: 32px;
+            font-weight: 800;
+            margin-bottom: 13px;
+            letter-spacing: -0.8px;
+        }
+
+        .section-heading p {
+            color: var(--muted);
+            font-size: 14px;
+            line-height: 1.8;
+        }
+
+        /* NAVIGATION CARDS */
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+        }
+
+        .section-card {
+            min-height: 255px;
+            padding: 32px 28px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+            transition:
+                border-color 0.3s ease,
+                background 0.3s ease,
+                transform 0.3s ease;
+        }
+
+        .section-card::before {
+            content: "";
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            background: rgba(240,120,50,0.08);
+            filter: blur(55px);
+            border-radius: 50%;
+            right: -60px;
+            bottom: -60px;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+
+        .section-card:hover {
+            border-color: rgba(240,120,50,0.7);
+            background: #252525;
+            transform: translateY(-7px);
+        }
+
+        .section-card:hover::before {
+            opacity: 1;
+        }
+
+        .card-content,
+        .card-link {
+            position: relative;
+            z-index: 1;
+        }
+
+        .card-label {
+            color: var(--orange);
+            font-size: 10px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 22px;
+        }
+
+        .section-card h3 {
+            font-size: 23px;
+            font-weight: 800;
+            margin-bottom: 13px;
+        }
+
+        .section-card p {
+            color: var(--muted);
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        .card-link {
+            margin-top: 28px;
+            font-size: 11px;
+            font-weight: 800;
+            color: var(--orange);
+            letter-spacing: 0.7px;
+        }
+
+        .card-link span {
+            display: inline-block;
+            margin-left: 5px;
+            transition: transform 0.25s ease;
+        }
+
+        .section-card:hover .card-link span {
+            transform: translateX(6px);
+        }
+
+        /* BOTTOM COMMUNITY CTA */
+
+        .community-cta {
+            max-width: 1100px;
+            margin: 0 auto 100px;
+            padding: 65px 7%;
+            width: 86%;
+            text-align: center;
+            border-radius: 12px;
+            border: 1px solid rgba(240,120,50,0.2);
+            background:
+                linear-gradient(
+                    110deg,
+                    rgba(21,21,21,0.94),
+                    rgba(21,21,21,0.88)
+                ),
+                url("https://images.unsplash.com/photo-1593305841991-05c297ba4575?auto=format&fit=crop&w=1800&q=85")
+                center / cover no-repeat;
+        }
+
+        .community-cta h2 {
+            font-size: clamp(25px, 4vw, 36px);
+            font-weight: 800;
+            margin-bottom: 15px;
+        }
+
+        .community-cta h2 span {
+            color: var(--orange);
+        }
+
+        .community-cta p {
+            max-width: 600px;
+            margin: 0 auto;
+            color: #c2c2c2;
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        .community-cta .hero-btn {
+            margin-top: 27px;
+        }
+
+        /* SCROLL REVEAL */
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(28px);
+            transition:
+                opacity 0.8s ease,
+                transform 0.8s ease;
+        }
+
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .section-card:nth-child(2) {
+            transition-delay: 0.12s;
+        }
+
+        .section-card:nth-child(3) {
+            transition-delay: 0.24s;
+        }
+
+        /* FOOTER */
+
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 32px 7%;
+            text-align: center;
+            color: #858585;
+        }
+
+        .footer-brand {
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 11px;
+            color: #c5c5c5;
+        }
+
+        .copyright {
+            font-size: 12px;
+            color: #777;
+            letter-spacing: 0.3px;
+        }
+
+        /* RESPONSIVE */
+
+        @media (max-width: 1000px) {
+            .site-header {
+                padding: 0 5%;
+            }
+
+            .nav-links {
+                gap: 20px;
+            }
+
+            .nav-links a {
+                font-size: 11px;
+            }
+        }
+
+        @media (max-width: 800px) {
+            .site-header {
+                padding: 0 5%;
+            }
+
+            .nav-links {
+                gap: 15px;
+            }
+
+            .nav-links .join-btn {
+                padding: 10px 13px;
+            }
+        }
+
+        @media (max-width: 650px) {
+            .site-header {
+                height: auto;
+                min-height: 70px;
+                padding: 13px 5%;
+                flex-direction: column;
+                gap: 13px;
+            }
+
+            .logo img {
+                width: 94px;
+            }
+
+            .nav-links {
+                width: 100%;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 12px 16px;
+            }
+
+            .nav-links a {
+                font-size: 10px;
+            }
+
+            .nav-links .join-btn {
+                padding: 9px 11px;
+            }
+
+            .hero {
+                min-height: 590px;
+                padding: 75px 6% 85px;
+            }
+
+            .hero h1 {
+                font-size: clamp(42px, 11vw, 60px);
+                letter-spacing: -2px;
+            }
+
+            .hero-description {
+                font-size: 14px;
+            }
+
+            .eyebrow {
+                font-size: 10px;
+                letter-spacing: 2px;
+            }
+
+            .hero-actions {
+                gap: 11px;
+            }
+
+            .hero-btn {
+                padding: 13px 17px;
+                font-size: 10px;
+            }
+
+            .giveaway-strip {
+                padding: 17px 12px;
+                gap: 8px;
+            }
+
+            .giveaway-strip strong,
+            .giveaway-strip span {
+                font-size: 10px;
+            }
+
+            .section-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-card {
+                min-height: 210px;
+            }
+
+            .sections {
+                padding: 75px 6% 85px;
+            }
+
+            .section-heading h2 {
+                font-size: 27px;
+            }
+
+            .section-card:nth-child(2),
+            .section-card:nth-child(3) {
+                transition-delay: 0s;
+            }
+
+            .community-cta {
+                width: 88%;
+                margin-bottom: 75px;
+                padding: 50px 7%;
+            }
+        }
+
+        /* REDUCED MOTION */
+
+        @media (prefers-reduced-motion: reduce) {
+            html {
+                scroll-behavior: auto;
+            }
+
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                transition-duration: 0.01ms !important;
+            }
+
+            .reveal {
+                opacity: 1;
+                transform: none;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
-  <main>
+    <!-- SHARED NAVIGATION -->
 
-    <!-- HERO -->
+    <header class="site-header">
 
-    <section class="hero" id="home">
-
-      <nav>
-        <a href="index.html" aria-label="GK Gaming Home">
-          <img
-            class="logo"
-            src="dccc7b68601b277504ee1adb317e885d.webp"
-            alt="GK Gaming Logo"
-          >
+        <a href="index.html" class="logo">
+            <img src="dccc7b68601b277504ee1adb317e885d.webp" alt="GK Gaming Logo">
         </a>
 
-        <div class="nav-right">
+        <nav class="nav-links">
+            <a href="index.html" class="active">HOME</a>
+            <a href="about.html">ABOUT US</a>
+            <a href="marketplace.html">MARKETPLACE</a>
+            <a href="gkplus.html">GK+</a>
+            <a href="https://discord.gg/SZFxAamC3Y" target="_blank" rel="noopener noreferrer" class="join-btn">JOIN DISCORD</a>
+        </nav>
 
-          <a
-            class="discord-button"
-            href="https://discord.gg/SZFxAamC3Y"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <svg viewBox="0 0 24 24" aria-hidden="true">
-              <path fill="currentColor" d="M19.7 5.3A18.5 18.5 0 0 0 15.1 3.9l-.6 1.2a17 17 0 0 0-5 0l-.6-1.2a18.5 18.5 0 0 0-4.6 1.4C1.4 9.6.6 13.8 1 18a18.7 18.7 0 0 0 5.7 2.9l1.2-2a12 12 0 0 1-1.9-.9l.5-.4a13.3 13.3 0 0 0 11 0l.5.4a12 12 0 0 1-1.9.9l1.2 2A18.7 18.7 0 0 0 23 18c.5-4.9-.8-9-3.3-12.7ZM8.5 15.2c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2Zm7 0c-1 0-1.8-.9-1.8-2s.8-2 1.8-2 1.8.9 1.8 2-.8 2-1.8 2Z"/>
-            </svg>
-            JOIN DISCORD
-          </a>
+    </header>
 
-          <div class="giveaway-tag">
-            <span aria-hidden="true">🎁</span>
+    <main>
+
+        <!-- HERO -->
+
+        <section class="hero" id="home">
+
+            <div class="hero-content">
+
+                <div class="eyebrow">
+                    <span class="status-dot"></span>
+                    WELCOME TO GK GAMING
+                </div>
+
+                <h1>
+                    Game Together.<br>
+                    <span>Stay Connected.</span>
+                </h1>
+
+                <p class="hero-description">
+                    Your place to game, chill, hang out and connect.
+                    Join a growing community, meet new people,
+                    explore our marketplace and discover exclusive GK+ perks.
+                </p>
+
+                <div class="hero-actions">
+
+                    <a
+                        href="https://discord.gg/SZFxAamC3Y"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="hero-btn primary"
+                    >
+                        JOIN THE COMMUNITY →
+                    </a>
+
+                    <a href="#explore" class="hero-btn secondary">
+                        EXPLORE GK GAMING
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- GIVEAWAY ANNOUNCEMENT -->
+
+        <div class="giveaway-strip reveal">
+
+            <span class="giveaway-icon">🎁</span>
+
             <strong>200 ROBUX GIVEAWAY</strong>
-            <span>Starting November 13</span>
-          </div>
+
+            <span>Starting November 13, 2026</span>
 
         </div>
-      </nav>
 
-      <div class="hero-content">
-        <div class="eyebrow">UNDER DEVELOPMENT</div>
+        <!-- EXPLORE SECTIONS -->
 
-        <h1>
-          Something New<br>
-          <span>Is Coming.</span>
-        </h1>
+        <section class="sections" id="explore">
 
-        <p>
-          We're building something for gamers and communities.
-          Explore GK Gaming and discover what's coming next.
-        </p>
-      </div>
+            <div class="section-heading reveal">
 
-      <a href="#explore" class="scroll-indicator">
-        <span>SCROLL TO EXPLORE</span>
-        <span class="scroll-arrow">↓</span>
-      </a>
+                <div class="small-label">DISCOVER MORE</div>
 
-    </section>
+                <h2>Explore GK Gaming</h2>
 
-    <!-- EXPLORE SECTIONS -->
+                <p>
+                    Discover our community, explore what's available
+                    and find something exclusive.
+                </p>
 
-    <section class="sections" id="explore">
+            </div>
 
-      <div class="section-heading reveal">
-        <h2>Explore GK Gaming</h2>
-        <p>Everything you need, all in one place.</p>
-      </div>
+            <div class="section-grid">
 
-      <div class="section-grid">
+                <!-- ABOUT US -->
 
-        <a href="about.html" class="section-card reveal">
-          <div>
-            <div class="card-label">DISCOVER</div>
-            <h3>About Us</h3>
+                <a href="about.html" class="section-card reveal">
+
+                    <div class="card-content">
+
+                        <div class="card-label">DISCOVER</div>
+
+                        <h3>About Us</h3>
+
+                        <p>
+                            Get to know GK Gaming, our community,
+                            what we stand for and everything
+                            that makes us a place to connect.
+                        </p>
+
+                    </div>
+
+                    <div class="card-link">
+                        LEARN MORE <span>→</span>
+                    </div>
+
+                </a>
+
+                <!-- MARKETPLACE -->
+
+                <a href="marketplace.html" class="section-card reveal">
+
+                    <div class="card-content">
+
+                        <div class="card-label">EXPLORE</div>
+
+                        <h3>Marketplace</h3>
+
+                        <p>
+                            Explore our available services, advertising
+                            options, exclusive roles and other
+                            offerings from GK Gaming.
+                        </p>
+
+                    </div>
+
+                    <div class="card-link">
+                        VISIT MARKETPLACE <span>→</span>
+                    </div>
+
+                </a>
+
+                <!-- GK+ -->
+
+                <a href="gkplus.html" class="section-card reveal">
+
+                    <div class="card-content">
+
+                        <div class="card-label">EXCLUSIVE</div>
+
+                        <h3>GK+</h3>
+
+                        <p>
+                            Unlock exclusive community benefits,
+                            special Marketplace discounts and
+                            additional perks with GK+.
+                        </p>
+
+                    </div>
+
+                    <div class="card-link">
+                        DISCOVER GK+ <span>→</span>
+                    </div>
+
+                </a>
+
+            </div>
+
+        </section>
+
+        <!-- COMMUNITY CTA -->
+
+        <section class="community-cta reveal">
+
+            <h2>
+                Your Community.<br>
+                <span>Your Place to Belong.</span>
+            </h2>
+
             <p>
-              Get to know GK Gaming, our community,
-              what we stand for and what makes us different.
+                Whether you're here to play games, meet people,
+                take part in giveaways or simply hang out,
+                there's a place for you at GK Gaming.
             </p>
-          </div>
-          <div class="card-link">LEARN MORE <span>→</span></div>
-        </a>
 
-        <a href="marketplace.html" class="section-card reveal">
-          <div>
-            <div class="card-label">EXPLORE</div>
-            <h3>Marketplace</h3>
-            <p>
-              Discover what's available in the GK Gaming
-              marketplace. More coming soon.
-            </p>
-          </div>
-          <div class="card-link">EXPLORE <span>→</span></div>
-        </a>
+            <a
+                href="https://discord.gg/SZFxAamC3Y"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hero-btn primary"
+            >
+                JOIN GK GAMING →
+            </a>
 
-        <a href="gkplus.html" class="section-card reveal">
-          <div>
-            <div class="card-label">EXCLUSIVE</div>
-            <h3>GK+</h3>
-            <p>
-              Discover the future of GK Gaming
-              and explore what's coming with GK+.
-            </p>
-          </div>
-          <div class="card-link">DISCOVER <span>→</span></div>
-        </a>
+        </section>
 
-      </div>
-    </section>
+    </main>
 
-  </main>
+    <!-- FOOTER -->
 
-  <!-- FOOTER -->
+    <footer>
 
-  <footer>
-    <div class="footer-brand">GK GAMING</div>
-    <div class="copyright">
-      © 2026 GK Gaming. All rights reserved.
-    </div>
-  </footer>
+        <div class="footer-brand">GK GAMING</div>
 
-  <!-- SCROLL ANIMATIONS -->
+        <div class="copyright">
+            © 2026 GK Gaming. All rights reserved.
+        </div>
 
-  <script>
-    const revealElements = document.querySelectorAll('.reveal');
+    </footer>
 
-    const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.15
-    });
+    <!-- SCROLL ANIMATIONS -->
 
-    revealElements.forEach(element => {
-      observer.observe(element);
-    });
-  </script>
+    <script>
+        const revealElements = document.querySelectorAll('.reveal');
+
+        const observer = new IntersectionObserver((entries, observer) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target);
+                }
+
+            });
+
+        }, {
+            threshold: 0.12
+        });
+
+        revealElements.forEach(element => {
+            observer.observe(element);
+        });
+    </script>
 
 </body>
 </html>
