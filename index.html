@@ -8,7 +8,6 @@
     <title>GK Gaming | Official Website</title>
     <meta name="description" content="Welcome to GK Gaming — your place to game, chill, hang out and connect. Explore our community, marketplace and exclusive GK+ perks.">
 
-    <!-- GK Favicon -->
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23151515'/%3E%3Ctext x='32' y='44' text-anchor='middle' font-family='Arial,sans-serif' font-size='31' font-weight='900' fill='%23f07832'%3EGK%3C/text%3E%3C/svg%3E">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -49,12 +48,64 @@
             text-decoration: none;
         }
 
+        /* HEADER */
+
+        .site-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 90px;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 8%;
+            background: linear-gradient(
+                to bottom,
+                rgba(10,10,10,0.65),
+                transparent
+            );
+        }
+
+        .logo img {
+            width: 118px;
+            height: auto;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover img {
+            transform: scale(1.04);
+        }
+
+        .join-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--orange);
+            color: #151515;
+            padding: 13px 22px;
+            border-radius: 6px;
+            font-size: 11px;
+            font-weight: 900;
+            letter-spacing: 0.8px;
+            transition: 0.3s ease;
+        }
+
+        .join-btn:hover {
+            background: var(--yellow);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(240,120,50,0.2);
+        }
+
         /* HERO */
 
         .hero {
-            min-height: 720px;
-            padding: 120px 7% 110px;
+            min-height: 750px;
+            padding: 150px 7% 110px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             text-align: center;
@@ -63,43 +114,26 @@
 
             background:
                 linear-gradient(
-                    180deg,
-                    rgba(10,10,10,0.48) 0%,
-                    rgba(10,10,10,0.72) 45%,
-                    rgba(21,21,21,0.98) 100%
+                    90deg,
+                    rgba(10,10,10,0.82),
+                    rgba(10,10,10,0.54),
+                    rgba(10,10,10,0.78)
                 ),
-                url("https://images.pexels.com/photos/7720712/pexels-photo-7720712.jpeg?auto=compress&cs=tinysrgb&w=2000")
+                linear-gradient(
+                    0deg,
+                    #151515 0%,
+                    transparent 38%
+                ),
+                url("https://images.pexels.com/photos/4317157/pexels-photo-4317157.jpeg?auto=compress&cs=tinysrgb&w=2400")
                 center 48% / cover no-repeat;
-        }
-
-        /* LOGO ONLY - NO NAVIGATION HEADER */
-
-        .hero-logo {
-            position: absolute;
-            top: 30px;
-            left: 7%;
-            z-index: 5;
-            display: inline-block;
-            transition: transform 0.3s ease;
-        }
-
-        .hero-logo:hover {
-            transform: scale(1.04);
-        }
-
-        .hero-logo img {
-            width: 125px;
-            height: auto;
-            display: block;
-            object-fit: contain;
         }
 
         .hero::before {
             content: "";
             position: absolute;
-            width: 520px;
-            height: 520px;
-            background: rgba(240,120,50,0.10);
+            width: 550px;
+            height: 550px;
+            background: rgba(240,120,50,0.12);
             filter: blur(130px);
             border-radius: 50%;
             top: 20%;
@@ -108,22 +142,10 @@
             pointer-events: none;
         }
 
-        .hero::after {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background: radial-gradient(
-                ellipse at center,
-                transparent 15%,
-                rgba(0,0,0,0.28) 100%
-            );
-            pointer-events: none;
-        }
-
         .hero-content {
             position: relative;
-            z-index: 2;
-            max-width: 920px;
+            z-index: 1;
+            max-width: 900px;
             animation: heroAppear 1s ease both;
         }
 
@@ -158,11 +180,11 @@
         }
 
         .hero h1 {
-            font-size: clamp(48px, 7vw, 86px);
+            font-size: clamp(45px, 7vw, 82px);
             line-height: 1.08;
             font-weight: 900;
             letter-spacing: -3.5px;
-            margin-bottom: 25px;
+            margin-bottom: 24px;
         }
 
         .hero h1 span {
@@ -195,13 +217,9 @@
             padding: 15px 24px;
             border-radius: 6px;
             font-size: 11px;
-            font-weight: 800;
+            font-weight: 900;
             letter-spacing: 0.7px;
-            transition:
-                transform 0.25s ease,
-                background 0.25s ease,
-                border-color 0.25s ease,
-                color 0.25s ease;
+            transition: 0.3s ease;
         }
 
         .hero-btn.primary {
@@ -212,56 +230,56 @@
         .hero-btn.primary:hover {
             background: var(--yellow);
             transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(240,120,50,0.2);
         }
 
         .hero-btn.secondary {
             border: 1px solid rgba(255,255,255,0.35);
             color: white;
-            background: rgba(255,255,255,0.05);
+            background: rgba(255,255,255,0.06);
             backdrop-filter: blur(8px);
         }
 
         .hero-btn.secondary:hover {
             border-color: var(--orange);
-            color: var(--orange);
+            color: var(--yellow);
             transform: translateY(-3px);
         }
 
-        /* SCROLL INDICATOR */
-
         .scroll-indicator {
             position: absolute;
-            bottom: 32px;
+            bottom: 35px;
             left: 50%;
             transform: translateX(-50%);
-            z-index: 3;
+            color: rgba(255,255,255,0.65);
+            font-size: 9px;
+            font-weight: 700;
+            letter-spacing: 3px;
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 9px;
-            color: #d0d0d0;
-            font-size: 9px;
-            font-weight: 800;
-            letter-spacing: 2px;
-            transition: color 0.25s ease;
+            gap: 12px;
         }
 
-        .scroll-indicator:hover {
-            color: var(--orange);
+        .scroll-indicator span {
+            width: 1px;
+            height: 35px;
+            background: linear-gradient(
+                to bottom,
+                var(--orange),
+                transparent
+            );
+            animation: scrollLine 1.6s ease-in-out infinite;
         }
 
-        .scroll-arrow {
-            color: var(--orange);
-            font-size: 23px;
-            animation: arrowBounce 1.6s infinite ease-in-out;
-        }
-
-        @keyframes arrowBounce {
+        @keyframes scrollLine {
             0%, 100% {
-                transform: translateY(0);
+                transform: scaleY(0.65);
+                opacity: 0.5;
             }
             50% {
-                transform: translateY(8px);
+                transform: scaleY(1);
+                opacity: 1;
             }
         }
 
@@ -270,13 +288,13 @@
         .sections {
             max-width: 1250px;
             margin: 0 auto;
-            padding: 100px 7% 110px;
-            scroll-margin-top: 30px;
+            padding: 105px 7% 115px;
+            scroll-margin-top: 35px;
         }
 
         .section-heading {
             text-align: center;
-            margin-bottom: 46px;
+            margin-bottom: 48px;
         }
 
         .section-heading .small-label {
@@ -288,7 +306,7 @@
         }
 
         .section-heading h2 {
-            font-size: 33px;
+            font-size: 34px;
             font-weight: 800;
             margin-bottom: 13px;
             letter-spacing: -0.8px;
@@ -300,7 +318,7 @@
             line-height: 1.8;
         }
 
-        /* NAVIGATION CARDS */
+        /* CARDS */
 
         .section-grid {
             display: grid;
@@ -309,8 +327,8 @@
         }
 
         .section-card {
-            min-height: 260px;
-            padding: 33px 28px;
+            min-height: 255px;
+            padding: 32px 28px;
             background: var(--panel);
             border: 1px solid var(--border);
             border-radius: 10px;
@@ -319,10 +337,7 @@
             justify-content: space-between;
             position: relative;
             overflow: hidden;
-            transition:
-                border-color 0.3s ease,
-                background 0.3s ease,
-                transform 0.3s ease;
+            transition: 0.35s ease;
         }
 
         .section-card::before {
@@ -330,19 +345,19 @@
             position: absolute;
             width: 170px;
             height: 170px;
-            background: rgba(240,120,50,0.09);
+            background: rgba(240,120,50,0.1);
             filter: blur(60px);
             border-radius: 50%;
-            right: -70px;
-            bottom: -70px;
+            right: -65px;
+            bottom: -65px;
             opacity: 0;
             transition: opacity 0.35s ease;
         }
 
         .section-card:hover {
-            border-color: rgba(240,120,50,0.75);
+            border-color: rgba(240,120,50,0.7);
             background: #252525;
-            transform: translateY(-7px);
+            transform: translateY(-8px);
         }
 
         .section-card:hover::before {
@@ -397,47 +412,41 @@
 
         .community-cta {
             max-width: 1100px;
-            width: 86%;
-            margin: 0 auto 105px;
+            margin: 0 auto 100px;
             padding: 75px 7%;
+            width: 86%;
             text-align: center;
             border-radius: 12px;
             border: 1px solid rgba(240,120,50,0.25);
+            background:
+                radial-gradient(
+                    circle at 50% 0%,
+                    rgba(240,120,50,0.14),
+                    transparent 65%
+                ),
+                linear-gradient(135deg, #22201e, #171717 70%);
             position: relative;
             overflow: hidden;
-
-            background:
-                linear-gradient(
-                    110deg,
-                    rgba(10,15,20,0.83),
-                    rgba(10,15,20,0.91)
-                ),
-                url("https://cdn.pixabay.com/photo/2022/03/15/15/19/gaming-setup-7070569_1280.jpg")
-                center 48% / cover no-repeat;
         }
 
         .community-cta::before {
             content: "";
             position: absolute;
             inset: 0;
-            background: radial-gradient(
-                circle at 50% 50%,
-                rgba(240,120,50,0.12),
-                transparent 65%
+            background: linear-gradient(
+                120deg,
+                transparent 30%,
+                rgba(255,255,255,0.025),
+                transparent 70%
             );
             pointer-events: none;
         }
 
-        .community-cta-content {
-            position: relative;
-            z-index: 1;
-        }
-
         .community-cta h2 {
-            font-size: clamp(27px, 4vw, 39px);
-            font-weight: 900;
-            line-height: 1.2;
-            margin-bottom: 17px;
+            position: relative;
+            font-size: clamp(25px, 4vw, 36px);
+            font-weight: 800;
+            margin-bottom: 15px;
         }
 
         .community-cta h2 span {
@@ -445,22 +454,24 @@
         }
 
         .community-cta p {
-            max-width: 610px;
+            position: relative;
+            max-width: 600px;
             margin: 0 auto;
-            color: #d0d0d0;
+            color: #c2c2c2;
             font-size: 13px;
             line-height: 1.9;
         }
 
         .community-cta .hero-btn {
-            margin-top: 30px;
+            position: relative;
+            margin-top: 27px;
         }
 
         /* SCROLL REVEAL */
 
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(28px);
             transition:
                 opacity 0.8s ease,
                 transform 0.8s ease;
@@ -502,66 +513,54 @@
             letter-spacing: 0.3px;
         }
 
-        .photo-credit {
-            margin-top: 12px;
-            font-size: 10px;
-            color: #777;
-        }
-
-        .photo-credit a {
-            color: #999;
-            text-decoration: underline;
-            text-underline-offset: 3px;
-        }
-
-        .photo-credit a:hover {
-            color: var(--orange);
-        }
-
         /* RESPONSIVE */
 
-        @media (max-width: 800px) {
+        @media (max-width: 850px) {
+            .site-header {
+                padding: 0 6%;
+            }
+
             .hero {
-                min-height: 650px;
-                padding: 125px 6% 100px;
-            }
-
-            .hero-logo {
-                left: 6%;
-                top: 25px;
-            }
-
-            .hero-logo img {
-                width: 105px;
+                min-height: 690px;
             }
 
             .section-grid {
-                grid-template-columns: repeat(2, 1fr);
+                grid-template-columns: 1fr;
             }
 
-            .section-card:last-child {
-                grid-column: 1 / -1;
+            .section-card {
+                min-height: 215px;
+            }
+
+            .section-card:nth-child(2),
+            .section-card:nth-child(3) {
+                transition-delay: 0s;
             }
         }
 
         @media (max-width: 600px) {
+            .site-header {
+                height: 78px;
+                padding: 0 5%;
+            }
+
+            .logo img {
+                width: 98px;
+            }
+
+            .join-btn {
+                padding: 11px 14px;
+                font-size: 9px;
+            }
+
             .hero {
-                min-height: 630px;
+                min-height: 650px;
                 padding: 120px 6% 100px;
-                background-position: 55% center;
-            }
-
-            .hero-logo {
-                left: 6%;
-                top: 22px;
-            }
-
-            .hero-logo img {
-                width: 95px;
+                background-position: 54% center;
             }
 
             .hero h1 {
-                font-size: clamp(43px, 11vw, 60px);
+                font-size: clamp(42px, 11vw, 60px);
                 letter-spacing: -2px;
             }
 
@@ -580,7 +579,7 @@
 
             .hero-btn {
                 padding: 13px 17px;
-                font-size: 10px;
+                font-size: 9px;
             }
 
             .sections {
@@ -588,22 +587,7 @@
             }
 
             .section-heading h2 {
-                font-size: 27px;
-            }
-
-            .section-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .section-card,
-            .section-card:last-child {
-                min-height: 215px;
-                grid-column: auto;
-            }
-
-            .section-card:nth-child(2),
-            .section-card:nth-child(3) {
-                transition-delay: 0s;
+                font-size: 28px;
             }
 
             .community-cta {
@@ -637,20 +621,30 @@
 
 <body>
 
+    <!-- HEADER -->
+
+    <header class="site-header">
+
+        <a href="index.html" class="logo">
+            <img src="dccc7b68601b277504ee1adb317e885d.webp" alt="GK Gaming Logo">
+        </a>
+
+        <a
+            href="https://discord.gg/SZFxAamC3Y"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="join-btn"
+        >
+            JOIN DISCORD →
+        </a>
+
+    </header>
+
     <main>
 
         <!-- HERO -->
 
         <section class="hero" id="home">
-
-            <!-- LOGO ONLY -->
-
-            <a href="index.html" class="hero-logo" aria-label="GK Gaming Home">
-                <img
-                    src="dccc7b68601b277504ee1adb317e885d.webp"
-                    alt="GK Gaming Logo"
-                >
-            </a>
 
             <div class="hero-content">
 
@@ -689,10 +683,10 @@
 
             </div>
 
-            <a href="#explore" class="scroll-indicator">
-                <span>SCROLL TO EXPLORE</span>
-                <span class="scroll-arrow">↓</span>
-            </a>
+            <div class="scroll-indicator">
+                SCROLL TO EXPLORE
+                <span></span>
+            </div>
 
         </section>
 
@@ -795,29 +789,25 @@
 
         <section class="community-cta reveal">
 
-            <div class="community-cta-content">
+            <h2>
+                Your Community.<br>
+                <span>Your Place to Belong.</span>
+            </h2>
 
-                <h2>
-                    Your Community.<br>
-                    <span>Your Place to Belong.</span>
-                </h2>
+            <p>
+                Whether you're here to play games, meet people,
+                take part in giveaways or simply hang out,
+                there's a place for you at GK Gaming.
+            </p>
 
-                <p>
-                    Whether you're here to play games, meet people,
-                    make friends or simply hang out,
-                    there's a place for you at GK Gaming.
-                </p>
-
-                <a
-                    href="https://discord.gg/SZFxAamC3Y"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="hero-btn primary"
-                >
-                    JOIN GK GAMING →
-                </a>
-
-            </div>
+            <a
+                href="https://discord.gg/SZFxAamC3Y"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="hero-btn primary"
+            >
+                JOIN GK GAMING →
+            </a>
 
         </section>
 
@@ -831,13 +821,6 @@
 
         <div class="copyright">
             © 2026 GK Gaming. All rights reserved.
-        </div>
-
-        <div class="photo-credit">
-            Background photos:
-            <a href="https://www.pexels.com/photo/computer-setup-in-dark-room-7720712/" target="_blank" rel="noopener noreferrer">Pexels</a>
-            ·
-            <a href="https://pixabay.com/photos/gaming-setup-dark-room-bedroom-7070569/" target="_blank" rel="noopener noreferrer">Pixabay</a>
         </div>
 
     </footer>
